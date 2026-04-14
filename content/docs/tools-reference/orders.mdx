@@ -1,0 +1,130 @@
+---
+title: Orders
+description: List, filter, update, and refund WooCommerce orders.
+tier: pro
+order: 6
+---
+
+Order management is a Pro feature because it includes write operations — status changes, notes, and refunds — that affect real customers.
+
+## store_mcp_list_orders
+
+List orders with filters and pagination.
+
+**Tier:** Pro
+
+### Parameters
+
+| Parameter     | Type    | Required | Default | Description |
+|---------------|---------|----------|---------|-------------|
+| status        | string  | no       | any     | `pending`, `processing`, `on-hold`, `completed`, `cancelled`, `refunded`, `failed` |
+| customer      | integer | no       | —       | Customer ID |
+| after         | string  | no       | —       | ISO date — orders created after this |
+| before        | string  | no       | —       | ISO date — orders created before |
+| product       | integer | no       | —       | Only orders containing this product |
+| min_total     | number  | no       | —       | Minimum order total |
+| max_total     | number  | no       | —       | Maximum order total |
+| payment_method| string  | no       | —       | e.g. `stripe`, `mercadopago`, `cod` |
+| orderby       | string  | no       | date    | `date`, `modified`, `total` |
+| order         | string  | no       | desc    | `asc`, `desc` |
+| page          | integer | no       | 1       | Page number |
+| per_page      | integer | no       | 10      | Items per page (max 100) |
+
+### Example prompt
+
+> "List all processing orders from the last 7 days with totals over $100."
+
+### Example response
+
+```json
+{
+  "success": true,
+  "data": [
+    {
+      "id": 18402,
+      "number": "18402",
+      "status": "processing",
+      "total": "127.50",
+      "currency": "USD",
+      "date_created": "2026-04-12T18:22:00",
+      "customer_id": 521,
+      "billing": {
+        "first_name": "María",
+        "last_name": "Fernández",
+        "email": "maria@example.com"
+      },
+      "line_items": [
+        { "product_id": 4371, "name": "Agua Mineral 750ml x12", "quantity": 1, "total": "30.00" }
+      ],
+      "payment_method_title": "Mercado Pago"
+    }
+  ],
+  "meta": { "total": 47, "pages": 5, "page": 1, "per_page": 10 }
+}
+```
+
+## store_mcp_get_order
+
+Get full details for a single order.
+
+**Tier:** Pro
+
+### Parameters
+
+| Parameter | Type    | Required | Default | Description |
+|-----------|---------|----------|---------|-------------|
+| id        | integer | yes      | —       | Order ID |
+
+## store_mcp_update_order_status
+
+Change an order's status.
+
+**Tier:** Pro
+
+### Parameters
+
+| Parameter | Type    | Required | Default | Description |
+|-----------|---------|----------|---------|-------------|
+| id        | integer | yes      | —       | Order ID |
+| status    | string  | yes      | —       | Target status |
+| note      | string  | no       | —       | Optional status-change note |
+
+## store_mcp_add_order_note
+
+Add a private or customer-visible note to an order.
+
+**Tier:** Pro
+
+### Parameters
+
+| Parameter    | Type    | Required | Default | Description |
+|--------------|---------|----------|---------|-------------|
+| id           | integer | yes      | —       | Order ID |
+| note         | string  | yes      | —       | Note content |
+| customer_note| boolean | no       | false   | If `true`, the note emails the customer |
+
+<Callout type="warning" title="Customer-visible notes send email">
+  Setting `customer_note: true` sends an email to the customer using the
+  site's email templates. Confirm intent before sending.
+</Callout>
+
+## store_mcp_refund_order
+
+Issue a refund. See also [Refunds](/docs/tools-reference/refunds).
+
+**Tier:** Pro
+
+### Parameters
+
+| Parameter | Type    | Required | Default | Description |
+|-----------|---------|----------|---------|-------------|
+| id        | integer | yes      | —       | Order ID |
+| amount    | number  | no       | total   | Refund amount (partial refund) |
+| reason    | string  | no       | —       | Reason shown in the refund record |
+| api_refund| boolean | no       | true    | Also refund via the payment gateway |
+
+## Related
+
+- [Refunds](/docs/tools-reference/refunds)
+- [Customers](/docs/tools-reference/customers)
+- [Processing orders guide](/docs/guides/processing-orders)

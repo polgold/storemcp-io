@@ -1,0 +1,47 @@
+---
+title: Variations
+description: Manage WooCommerce variable-product variations.
+tier: pro
+order: 2
+---
+
+Variations are children of a variable product — each combination of attributes (size, color, etc.) is a variation with its own SKU, price, and stock.
+
+## store_mcp_list_variations
+
+List variations for a variable product.
+
+**Tier:** Pro
+
+### Parameters
+
+| Parameter   | Type    | Required | Default | Description |
+|-------------|---------|----------|---------|-------------|
+| product_id  | integer | yes      | —       | Parent variable product ID |
+| search      | string  | no       | —       | Search in SKU |
+| stock_status| string  | no       | —       | `instock`, `outofstock` |
+| on_sale     | boolean | no       | —       | Filter by sale status |
+| page        | integer | no       | 1       | Page number |
+| per_page    | integer | no       | 20      | Items per page |
+
+## store_mcp_get_variation
+
+Get a single variation. **Tier:** Pro.
+
+## store_mcp_create_variation
+
+Create a new variation. **Tier:** Pro.
+
+## store_mcp_update_variation
+
+Update variation price / stock / attributes. **Tier:** Pro.
+
+## store_mcp_delete_variation
+
+Delete a variation. **Tier:** Pro.
+
+<Callout type="info">
+  Variations always belong to a parent variable product. Creating variations
+  under a simple product will fail — change the parent's `type` to `variable`
+  first.
+</Callout>

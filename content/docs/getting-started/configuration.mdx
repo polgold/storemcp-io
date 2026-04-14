@@ -1,0 +1,69 @@
+---
+title: Configuration
+description: Generate an API key and configure authentication for StoreMCP.
+tier: free
+order: 2
+---
+
+After installing StoreMCP, you need to do two things before connecting an AI client:
+
+1. Generate an **API key** (or decide to use Application Passwords)
+2. Note your **MCP server URL**
+
+## Generate an API key
+
+In your WordPress admin:
+
+1. Go to **StoreMCP → API Keys**
+2. Click **Create new key**
+3. Give the key a descriptive name (e.g. `Claude Desktop`, `Cursor`, `ChatGPT`)
+4. Choose the **scope** — which tool modules this key can access
+5. Click **Create**
+
+<Callout type="warning" title="Copy the key now">
+  The API key is shown only once. If you lose it, you'll need to revoke it and
+  create a new one. Rotate keys regularly.
+</Callout>
+
+## Your MCP server URL
+
+The URL is always:
+
+```text
+https://your-site.com/wp-json/storemcp/v1/mcp
+```
+
+Replace `your-site.com` with your actual domain. HTTPS is required.
+
+## Authentication methods
+
+StoreMCP supports two authentication methods:
+
+### 1. API keys (recommended)
+
+Simpler, scoped, revokable. The key is passed as a bearer token:
+
+```text
+Authorization: Bearer sk_live_...
+```
+
+### 2. Application Passwords (core WordPress)
+
+If you prefer WordPress's native [Application Passwords](https://wordpress.org/documentation/article/application-passwords/), StoreMCP will accept them too. Any user with the `manage_woocommerce` capability (or a custom role you define) can create one.
+
+## Choose which modules are active
+
+Not every site needs every module. Disable modules you don't use to reduce surface area:
+
+**StoreMCP → Modules → toggle modules on / off**
+
+For example, a blog with no store can disable Products, Orders, Customers — leaving only content modules active.
+
+## Rate limiting
+
+Free plans have a rate limit of **30 requests/minute**. Pro/Agency is **120 req/min**. You can further tighten this per-key from **StoreMCP → Settings → Rate limiting**.
+
+## Next steps
+
+- [Connect Claude](/docs/getting-started/connecting-claude)
+- [Security best practices](/docs/security/best-practices)

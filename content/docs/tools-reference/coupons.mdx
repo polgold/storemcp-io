@@ -1,0 +1,46 @@
+---
+title: Coupons
+description: Create, edit, and list WooCommerce coupons with all restrictions.
+tier: pro
+order: 8
+---
+
+## store_mcp_list_coupons
+
+List coupons with filters. **Tier:** Pro.
+
+## store_mcp_get_coupon
+
+Get a coupon by ID or code. **Tier:** Pro.
+
+## store_mcp_create_coupon
+
+Create a new coupon. **Tier:** Pro.
+
+### Parameters (most common)
+
+| Parameter           | Type    | Required | Description |
+|---------------------|---------|----------|-------------|
+| code                | string  | yes      | Coupon code |
+| discount_type       | string  | no       | `percent`, `fixed_cart`, `fixed_product` |
+| amount              | string  | no       | Discount amount |
+| individual_use      | boolean | no       | Only one coupon per cart |
+| usage_limit         | integer | no       | Total usage limit |
+| usage_limit_per_user| integer | no       | Usage limit per customer |
+| date_expires        | string  | no       | ISO expiry date |
+| minimum_amount      | string  | no       | Minimum cart total |
+| product_ids         | array   | no       | Valid only for these products |
+| excluded_product_ids| array   | no       | Not valid for these products |
+| free_shipping       | boolean | no       | Grants free shipping |
+
+### Example prompt
+
+> "Create a 15% coupon code PASCUA26 valid until April 30 with a $30 minimum."
+
+## store_mcp_update_coupon
+
+Update an existing coupon. **Tier:** Pro.
+
+## store_mcp_delete_coupon
+
+Delete a coupon. **Tier:** Pro.

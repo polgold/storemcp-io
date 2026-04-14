@@ -1,0 +1,48 @@
+---
+title: Sales reports
+description: Generate sales reports, top-sellers, and trend analysis via AI.
+tier: free
+order: 3
+---
+
+## Revenue for a period
+
+```text
+"What was total revenue last month versus the previous month, grouped by week?"
+```
+
+Uses `store_mcp_report_sales` with `compare: true`.
+
+## Top sellers
+
+```text
+"Top 10 best-selling products in March, with units and revenue."
+```
+
+Combines `store_mcp_report_top_sellers` + `store_mcp_report_top_earners`.
+
+## Stock alerts
+
+```text
+"Products with less than 5 units in stock, grouped by category."
+```
+
+Uses `store_mcp_report_low_stock`.
+
+## Daily standup report
+
+```text
+"Give me the daily standup: yesterday's orders, revenue, top 3 products, and
+anything unusual."
+```
+
+This synthesizes multiple tools. Perfect for an AI-generated Slack summary every morning — see the [webhooks guide](/docs/tools-reference/webhooks) for automation ideas.
+
+## Custom cohorts (Pro)
+
+```text
+"Customer LTV by acquisition month for the last 12 months. Show me which cohort
+has the highest 90-day retention."
+```
+
+Uses `store_mcp_report_customer_ltv`.

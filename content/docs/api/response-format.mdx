@@ -1,0 +1,51 @@
+---
+title: Response format
+description: The shape of successful and failed tool responses.
+tier: free
+order: 4
+---
+
+All tools return JSON envelopes with a stable shape.
+
+## Success
+
+```json
+{
+  "success": true,
+  "data": ... ,
+  "meta": {
+    "total": 42,
+    "page": 1,
+    "per_page": 10,
+    "pages": 5
+  }
+}
+```
+
+- `data` — the tool's primary payload. Array for list tools, object for read/write.
+- `meta` — present on paginated responses only.
+
+## Failure
+
+See [Error codes](/docs/api/error-codes).
+
+## Dates
+
+Dates are ISO-8601 in the site's timezone (not UTC) unless otherwise noted. Use the `site_info` response to see the configured timezone.
+
+## Money
+
+Prices and totals are returned as strings (e.g. `"8.50"`) to avoid float
+rounding. The `currency` field is always included when money is present.
+
+## Pagination
+
+`page` and `per_page` are universal. `per_page` is capped at 100.
+
+```text
+GET /tools/list → ?page=2&per_page=25
+```
+
+## IDs
+
+IDs are always integers, never strings (even when WooCommerce exposes them as strings elsewhere).

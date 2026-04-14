@@ -1,0 +1,34 @@
+---
+title: Rate limiting (security)
+description: Rate limits are a security control. Here's the threat model.
+tier: free
+order: 3
+---
+
+Rate limits aren't just about fairness — they prevent a compromised key from
+exfiltrating or overwriting large amounts of data before you can revoke it.
+
+## Defaults
+
+See [admin-panel / rate-limiting](/docs/admin-panel/rate-limiting).
+
+## Burst vs sustained
+
+StoreMCP uses a token bucket. You can burst briefly (useful for bulk ops) but
+your sustained average is capped.
+
+## Alerts
+
+When any key hits 80% of its limit for more than 10 minutes, a notification
+email is sent to the site admin. Configure the threshold at
+**StoreMCP → Settings → Alerts**.
+
+## IP allow-list (Pro)
+
+Restrict a key to specific source IPs (CI runner, your office egress):
+
+```text
+Key allowed IPs: 203.0.113.0/24, 198.51.100.7
+```
+
+Requests from other IPs return `403 ip_not_allowed`.

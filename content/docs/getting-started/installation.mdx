@@ -1,0 +1,60 @@
+---
+title: Installation
+description: Install StoreMCP on your WordPress site in under two minutes.
+tier: free
+order: 1
+---
+
+StoreMCP is a standard WordPress plugin. You can install it the same way you install anything from the plugin directory.
+
+## Requirements
+
+- WordPress **6.2** or newer
+- PHP **7.4** or newer (PHP 8.1+ recommended)
+- WooCommerce **7.0+** (optional — only needed for commerce tools)
+- HTTPS (required for remote MCP connections)
+
+<Callout type="info" title="Works with HPOS">
+  StoreMCP is fully compatible with WooCommerce High-Performance Order Storage
+  (HPOS / custom order tables).
+</Callout>
+
+## Install from wordpress.org
+
+The easiest path — install directly from your WordPress admin:
+
+1. In your WordPress admin, go to **Plugins → Add New**
+2. Search for **StoreMCP**
+3. Click **Install Now**, then **Activate**
+
+That's it. After activation you'll see a new **StoreMCP** menu item in your admin sidebar.
+
+## Install from ZIP
+
+If you downloaded the plugin as a ZIP file (Pro or Agency):
+
+1. Go to **Plugins → Add New → Upload Plugin**
+2. Choose the `storemcp.zip` file
+3. Click **Install Now**, then **Activate**
+
+## Install via WP-CLI
+
+```bash
+wp plugin install storemcp --activate
+```
+
+## Activate your Pro license
+
+If you have a Pro or Agency license, activate it from **StoreMCP → License**:
+
+```text
+StoreMCP → License → Enter license key → Activate
+```
+
+Licenses auto-renew annually. You can deactivate a license on one site and move it to another at any time.
+
+## Next steps
+
+- [Configure your API key](/docs/getting-started/configuration)
+- [Connect Claude](/docs/getting-started/connecting-claude)
+- [Run your first commands](/docs/getting-started/first-commands)

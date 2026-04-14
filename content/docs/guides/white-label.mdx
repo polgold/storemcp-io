@@ -1,0 +1,41 @@
+---
+title: White-label
+description: Customize StoreMCP's name, logo, and admin menu for client sites.
+tier: agency
+order: 7
+---
+
+White-labeling is an **Agency** feature. You can rebrand StoreMCP entirely so that your clients see your agency's name, not ours.
+
+## Rebrand the plugin
+
+In `wp-config.php` on the client site:
+
+```php
+define('STOREMCP_BRAND_NAME', 'Acme Control');
+define('STOREMCP_BRAND_LOGO', '/wp-content/uploads/acme-logo.svg');
+define('STOREMCP_BRAND_PRIMARY', '#FF6600');
+```
+
+Or via the admin panel: **StoreMCP → White-label**.
+
+## Rename the admin menu
+
+```php
+define('STOREMCP_MENU_LABEL', 'AI Control');
+```
+
+## Hide "StoreMCP" from update notifications
+
+```php
+define('STOREMCP_HIDE_AUTHOR', true);
+```
+
+## What stays branded
+
+- The MCP server URL path (`/wp-json/storemcp/v1/mcp`) cannot be renamed — it's used by clients
+- Plugin file slug in `wp-content/plugins/` — but hidden from listings if `HIDE_AUTHOR` is on
+
+## Support handoff
+
+White-label clients won't know the product is called StoreMCP. If they file a support ticket through your agency, route them to us privately — we don't publicly acknowledge white-labeled deployments.

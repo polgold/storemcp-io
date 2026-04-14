@@ -1,0 +1,40 @@
+---
+title: WooCommerce issues
+description: WooCommerce-specific pitfalls and fixes.
+tier: pro
+order: 3
+---
+
+## WooCommerce not detected
+
+- Confirm WooCommerce 7.0+ is active
+- If you see "WooCommerce tools disabled" — activate the Products / Orders modules in **StoreMCP → Modules**
+
+## HPOS mismatch
+
+StoreMCP works with both the legacy `posts`/`postmeta` order storage and HPOS. If you recently enabled HPOS and some orders look wrong:
+
+- Run `wp wc cot sync` to force-sync tables
+- Or toggle **WooCommerce → Settings → Advanced → Features → HPOS** off/on to re-scan
+
+## Variations not found
+
+- Parent product type must be `variable`
+- Each variation must have attributes — a variation with no attributes is invisible to Woo
+
+## Coupon doesn't apply
+
+- Check `individual_use` — another coupon may be in effect
+- Check product/category restrictions
+- Check `minimum_amount` against the current cart
+
+## Stock out of sync
+
+- WooCommerce stores stock at the variation level for variable products
+- Use `store_mcp_list_variations` and update each variation, not the parent
+
+## Tax math looks off
+
+- Prices including tax vs excluding tax — check **WooCommerce → Settings → Tax**
+- Tax calculation based on customer address vs shop address
+- Use `store_mcp_get_settings` with `group: tax` to read the full tax config before writing

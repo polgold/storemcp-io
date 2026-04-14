@@ -1,0 +1,125 @@
+---
+title: Reports
+description: Sales reports, top sellers, revenue trends, and stock alerts.
+tier: free
+order: 9
+---
+
+Reports power the "ask anything" analytics use case. Basic reports are **Free**; advanced period-based analytics require **Pro**.
+
+## store_mcp_report_sales
+
+Total sales for a period.
+
+**Tier:** Pro *(basic totals available on Free via store_mcp_get_totals)*
+
+### Parameters
+
+| Parameter | Type    | Required | Default | Description |
+|-----------|---------|----------|---------|-------------|
+| period    | string  | no       | week    | `day`, `week`, `month`, `year`, `custom` |
+| date_min  | string  | no       | —       | Start date (required if `period: custom`) |
+| date_max  | string  | no       | —       | End date (required if `period: custom`) |
+| compare   | boolean | no       | false   | Also return the previous period for comparison |
+| group_by  | string  | no       | day     | `hour`, `day`, `week`, `month` |
+
+### Example prompt
+
+> "Compare this week's revenue to last week, grouped by day."
+
+### Example response
+
+```json
+{
+  "success": true,
+  "data": {
+    "period": "week",
+    "total_sales": "8412.30",
+    "net_sales": "7210.00",
+    "orders": 142,
+    "items_sold": 389,
+    "average_order_value": "59.24",
+    "currency": "USD",
+    "by_day": [
+      { "date": "2026-04-08", "total": "980.50", "orders": 18 },
+      { "date": "2026-04-09", "total": "1104.00", "orders": 22 }
+    ],
+    "comparison": {
+      "period": "2026-04-01 to 2026-04-07",
+      "total_sales": "7122.90",
+      "delta_pct": 18.1
+    }
+  }
+}
+```
+
+## store_mcp_report_top_sellers
+
+Best-selling products by units sold.
+
+**Tier:** Free
+
+### Parameters
+
+| Parameter | Type    | Required | Default | Description |
+|-----------|---------|----------|---------|-------------|
+| period    | string  | no       | month   | `week`, `month`, `year`, `custom` |
+| date_min  | string  | no       | —       | Start date |
+| date_max  | string  | no       | —       | End date |
+| limit     | integer | no       | 10      | Max rows |
+
+### Example response
+
+```json
+{
+  "success": true,
+  "data": [
+    { "product_id": 4371, "name": "Agua Mineral 750ml", "quantity": 234 },
+    { "product_id": 4108, "name": "Tiramisú Dolceria Alba", "quantity": 189 },
+    { "product_id": 3992, "name": "Huevo Pascua Baci", "quantity": 156 }
+  ]
+}
+```
+
+## store_mcp_report_top_earners
+
+Highest-grossing products by revenue.
+
+**Tier:** Pro
+
+Same parameters as top sellers but returns `revenue` per product.
+
+## store_mcp_report_low_stock
+
+Products with stock below a threshold.
+
+**Tier:** Free
+
+### Parameters
+
+| Parameter | Type    | Required | Default | Description |
+|-----------|---------|----------|---------|-------------|
+| threshold | integer | no       | 10      | Alert threshold |
+| limit     | integer | no       | 50      | Max rows |
+
+### Example prompt
+
+> "Which products have fewer than 5 units in stock?"
+
+## store_mcp_report_customer_ltv
+
+Customer lifetime value and cohort analysis.
+
+**Tier:** Pro
+
+### Parameters
+
+| Parameter  | Type    | Required | Default | Description |
+|------------|---------|----------|---------|-------------|
+| cohort_by  | string  | no       | month   | `week`, `month`, `quarter` |
+| limit      | integer | no       | 20      | Top customers to return |
+
+## Related
+
+- [Sales reports guide](/docs/guides/sales-reports)
+- [Orders](/docs/tools-reference/orders) — for order-level data

@@ -1,0 +1,99 @@
+---
+title: "10 Things You Can Do with StoreMCP and Claude"
+description: "Practical prompts that replace hours of dashboard clicking. Ten real workflows — from bulk pricing to SEO audits — copy-paste ready."
+date: "2026-04-12"
+category: "Guides"
+author: "ExitMedia"
+---
+
+Once StoreMCP is connected to Claude, the hard part isn't the technology — it's remembering that you *can* just ask. Here are ten prompts we use weekly that have replaced hours of manual work.
+
+## 1. Daily standup
+
+```text
+"Give me the daily standup: yesterday's orders, revenue versus average,
+top 3 products, and anything unusual."
+```
+
+Claude runs `store_mcp_report_sales`, compares to the 30-day rolling average, pulls `store_mcp_report_top_sellers`, and flags outliers. Three sentences, zero clicking.
+
+## 2. Bulk price update by season
+
+```text
+"Raise the price of every product tagged 'verano' by 12%, rounded to the
+nearest peso. Show me the first 5 before applying to all."
+```
+
+The "show first 5 before applying" line is important — it turns an irreversible op into a reviewable one.
+
+## 3. Find the products you forgot about
+
+```text
+"List products with zero sales in the last 90 days, sorted by stock value."
+```
+
+Claude cross-references `store_mcp_list_products` with `store_mcp_report_top_sellers`. Great for finding what to discount or discontinue.
+
+## 4. Write 40 meta descriptions
+
+```text
+"For every product missing a meta description, write one in Spanish under
+155 characters that highlights the product category and a key benefit."
+```
+
+You review a few as a spot-check. If the voice is right, you approve the rest. This used to take a full afternoon.
+
+## 5. Audit a single product's SEO
+
+```text
+"Audit SEO for product ID 4371. Report title length, description length,
+focus keyword usage, image alts, internal links, and anything missing."
+```
+
+## 6. Process a refund request
+
+```text
+"Customer María (order 18402) wants to return one Tiramisú. Refund that
+line item (about $7.50) and email her that the refund is processed."
+```
+
+Two tool calls. A minute of work.
+
+## 7. Create a scheduled promotion
+
+```text
+"Create coupon PASCUA26 for 15% off any cart over $30, valid from
+April 18 to April 25. Exclude products in 'Envíos' category."
+```
+
+## 8. Find duplicated products
+
+```text
+"Find products with duplicate SKUs. Show me the list."
+```
+
+Woo doesn't warn about duplicate SKUs by default. This is the cheapest "database hygiene" task there is.
+
+## 9. Identify your best customers
+
+```text
+"Who are my 10 highest-LTV customers? Include email, total spent, number
+of orders, and date of their last purchase."
+```
+
+Great for a personalized holiday reach-out or a loyalty program.
+
+## 10. Audit who has access
+
+```text
+"List every WordPress user with 'administrator' role and when they last
+logged in. Flag any inactive for more than 90 days."
+```
+
+Security hygiene is usually boring and skipped. AI makes it one prompt.
+
+## The pattern
+
+Notice what these prompts have in common: they're specific, they include a scope or threshold, and for anything destructive, they explicitly ask for a preview first. That's the whole trick.
+
+Try one of these on your own store today. Report back what you find.

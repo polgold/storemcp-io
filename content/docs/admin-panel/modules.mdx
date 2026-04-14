@@ -1,0 +1,46 @@
+---
+title: Modules
+description: Enable or disable tool modules to shape the AI's surface.
+tier: free
+order: 3
+---
+
+Modules group related tools. Disabling a module hides its tools from every AI client — no refactoring of keys required.
+
+## Available modules
+
+| Module      | Tools | Tier |
+|-------------|-------|------|
+| Products    | 6     | Free (read), Pro (write) |
+| Variations  | 5     | Pro |
+| Categories  | 5     | Free (read), Pro (write) |
+| Tags        | 5     | Free (read), Pro (write) |
+| Attributes  | 7     | Pro |
+| Orders      | 5     | Pro |
+| Customers   | 6     | Pro |
+| Coupons     | 5     | Pro |
+| Reports     | 5     | Free (basic), Pro (advanced) |
+| Shipping    | 9     | Pro |
+| Tax         | 8     | Pro |
+| Settings    | 5     | Pro |
+| Pages       | 5     | Free |
+| Posts       | 5     | Free |
+| Media       | 5     | Free |
+| Menus       | 7     | Free |
+| Widgets     | 5     | Free |
+| Users       | 5     | Free |
+| Reviews     | 6     | Free |
+| SEO         | 4     | Pro |
+| Plugins     | 9     | Pro |
+| Site info   | 3     | Free/Pro |
+| Webhooks    | 6     | Pro |
+| Refunds     | 4     | Pro |
+| System      | 5     | Pro/Agency |
+
+## Why disable modules?
+
+- **Smaller attack surface** — fewer tools means fewer things a compromised key can do
+- **Fewer tokens** — AI clients burn context on unused tool schemas
+- **Scoped clients** — a customer-service agent doesn't need `update_product`
+
+You can toggle individual modules at the site level, and use [custom MCP roles](/docs/admin-panel/license) to scope modules per WordPress user role (Agency tier).

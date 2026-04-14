@@ -1,0 +1,124 @@
+{
+  "nav": {
+    "features": "Características",
+    "pricing": "Precios",
+    "docs": "Documentación",
+    "blog": "Blog",
+    "changelog": "Changelog",
+    "support": "Soporte",
+    "account": "Cuenta",
+    "download": "Descargar Free",
+    "getPro": "Obtener Pro"
+  },
+  "hero": {
+    "badge": "Ahora en Beta pública",
+    "title": "Controlá todo tu sitio WordPress desde IA",
+    "subtitle": "StoreMCP conecta WordPress y WooCommerce con Claude, ChatGPT, Cursor y cualquier cliente AI compatible con MCP. Productos, órdenes, páginas, analytics — todo en lenguaje natural.",
+    "ctaPrimary": "Descargar Free",
+    "ctaSecondary": "Ver documentación"
+  },
+  "features": {
+    "title": "Qué podés hacer",
+    "subtitle": "Cada operación que necesitás, expuesta como una sola llamada."
+  },
+  "howItWorks": {
+    "title": "Cómo funciona",
+    "subtitle": "De la instalación al control por IA en menos de cinco minutos.",
+    "step1Title": "Instalá",
+    "step1Desc": "Instalá StoreMCP desde wordpress.org. Activá y generá tu API key.",
+    "step2Title": "Conectá",
+    "step2Desc": "Agregá la URL del servidor MCP en Claude, ChatGPT, Cursor o cualquier cliente MCP.",
+    "step3Title": "Controlá",
+    "step3Desc": "Preguntá lo que quieras. Tu asistente de IA tiene acceso total al sitio."
+  },
+  "woocommerce": {
+    "title": "Hecho para WooCommerce",
+    "tools": "+120 tools",
+    "desc": "El servidor MCP más completo para WordPress y WooCommerce. Desde gestión de productos hasta analítica avanzada de ventas — StoreMCP cubre cada operación."
+  },
+  "compatible": {
+    "title": "Compatible con",
+    "subtitle": "Funciona con todos los clientes de IA compatibles con MCP.",
+    "any": "Cualquier cliente MCP compatible"
+  },
+  "opensource": {
+    "title": "Núcleo open source",
+    "desc": "La versión free de StoreMCP es open source y está publicada en wordpress.org. Creemos en la transparencia y la comunidad.",
+    "github": "Ver en GitHub",
+    "wporg": "Publicación en wordpress.org"
+  },
+  "pricing": {
+    "title": "Precios simples",
+    "subtitle": "Free para siempre en sitios personales. Pro para tiendas. Agency para flotas.",
+    "perSite": "por sitio",
+    "perYear": "/ año",
+    "mostPopular": "Más popular",
+    "moneyBack": "Garantía de devolución de 14 días",
+    "viewAll": "Comparar planes",
+    "free": {
+      "name": "Free",
+      "price": "$0",
+      "tag": "para siempre",
+      "desc": "Para sitios personales y blogs chicos",
+      "cta": "Descargar Free"
+    },
+    "pro": {
+      "name": "Pro",
+      "price": "$99",
+      "tag": "por sitio · por año",
+      "desc": "Para tiendas y negocios que necesitan control total",
+      "cta": "Obtener Pro"
+    },
+    "agency": {
+      "name": "Agency",
+      "price": "$299",
+      "tag": "por año · sitios ilimitados",
+      "desc": "Para agencias y freelancers que gestionan múltiples clientes",
+      "cta": "Obtener Agency"
+    },
+    "everythingIn": "Todo lo de",
+    "plus": "más:",
+    "faqTitle": "Preguntas sobre precios"
+  },
+  "footer": {
+    "product": "Producto",
+    "resources": "Recursos",
+    "company": "Empresa",
+    "legal": "Legal",
+    "features": "Características",
+    "pricing": "Precios",
+    "docs": "Documentación",
+    "changelog": "Changelog",
+    "blog": "Blog",
+    "faq": "FAQ",
+    "support": "Soporte",
+    "about": "Sobre ExitMedia",
+    "contact": "Contacto",
+    "twitter": "Instagram",
+    "privacy": "Privacidad",
+    "terms": "Términos",
+    "madeBy": "Hecho por",
+    "tagline": "Centro de control IA para WordPress y WooCommerce.",
+    "rights": "Todos los derechos reservados."
+  },
+  "newsletter": {
+    "title": "Recibí novedades",
+    "subtitle": "Sin spam. Notas de release y algún tip ocasional.",
+    "placeholder": "tu@email.com",
+    "submit": "Suscribirme",
+    "success": "Gracias — ya estás en la lista."
+  },
+  "common": {
+    "learnMore": "Saber más",
+    "getStarted": "Empezar",
+    "free": "FREE",
+    "pro": "PRO",
+    "agency": "AGENCY",
+    "new": "NEW",
+    "copy": "Copiar",
+    "copied": "Copiado",
+    "searchDocs": "Buscar en docs…",
+    "onThisPage": "En esta página",
+    "edit": "Editar en GitHub"
+  }
+}

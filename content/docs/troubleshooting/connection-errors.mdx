@@ -1,0 +1,45 @@
+---
+title: Connection errors
+description: Diagnose why your AI client can't reach StoreMCP.
+tier: free
+order: 2
+---
+
+## "Connection refused" / "DNS failed"
+
+The site is unreachable from the AI client. Common causes:
+
+- Site is on localhost (Claude.ai and ChatGPT can only reach public URLs — use a tunnel like `ngrok` for local dev)
+- Firewall is blocking the AI client's IP
+- The domain's DNS hasn't propagated yet
+
+## "SSL/TLS error"
+
+- Certificate has expired — renew via Let's Encrypt or your host
+- Certificate isn't trusted (self-signed) — use a real cert
+- TLS 1.0/1.1 only — StoreMCP requires TLS 1.2+
+
+## "Unauthorized" (401)
+
+- Check the bearer token exactly matches the key from **StoreMCP → API Keys**
+- Key may have been revoked — create a new one
+- For Application Passwords: confirm the user exists and the app password is active
+
+## "Forbidden" (403)
+
+- Acting user doesn't have the capability required by the tool
+- Key is IP-restricted and the AI client isn't coming from an allowed IP
+
+## "Server error" (500/502)
+
+- Check WordPress error log — typically `wp-content/debug.log`
+- Enable [debug mode](/docs/troubleshooting/debug-mode) for a stack trace
+- Confirm PHP memory limit is at least 256M
+
+## Test from the command line
+
+```bash
+curl -i https://your-site.com/wp-json/storemcp/v1/health
+```
+
+You should get a 200. If you don't, the problem is at the network / WordPress layer, not the AI client.

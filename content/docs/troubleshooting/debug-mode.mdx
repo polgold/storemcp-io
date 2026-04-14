@@ -1,0 +1,47 @@
+---
+title: Debug mode
+description: Enable verbose logging and stack traces for troubleshooting.
+tier: free
+order: 4
+---
+
+## Enable debug mode
+
+**StoreMCP → Settings → Advanced → Debug mode** → On
+
+While debug mode is on:
+
+- Error responses include stack traces
+- Every tool call writes a line to `wp-content/storemcp.log`
+- Request/response bodies are logged (be careful — may contain PII)
+
+<Callout type="warning" title="Don't leave debug mode on in production">
+  Sensitive data may end up in logs. Turn it off once you've diagnosed the
+  issue.
+</Callout>
+
+## WordPress debug
+
+For issues that seem to be in WordPress itself, enable WP_DEBUG in `wp-config.php`:
+
+```php
+define('WP_DEBUG', true);
+define('WP_DEBUG_LOG', true);
+define('WP_DEBUG_DISPLAY', false);
+```
+
+Errors go to `wp-content/debug.log`.
+
+## Request tracing
+
+Every StoreMCP request has a unique `X-StoreMCP-Request-Id`. Include this ID when filing a support ticket — we can look it up immediately in your activity log.
+
+## Bug reports
+
+If you've hit a real bug, open an issue: [github.com/exitmediacontent/storemcp/issues](https://github.com/exitmediacontent/storemcp/issues). Include:
+
+1. StoreMCP version
+2. WordPress + WooCommerce versions
+3. PHP version
+4. The request ID
+5. Minimal reproduction steps

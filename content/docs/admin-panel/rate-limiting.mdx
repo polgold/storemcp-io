@@ -1,0 +1,40 @@
+---
+title: Rate limiting
+description: Configure per-site and per-key rate limits.
+tier: free
+order: 5
+---
+
+StoreMCP enforces rate limits to protect your site from runaway AI agents.
+
+## Defaults
+
+| Plan   | Limit           |
+|--------|-----------------|
+| Free   | 30 req/min      |
+| Pro    | 120 req/min     |
+| Agency | 120 req/min     |
+
+Limits are per key. If you have multiple keys, each has its own bucket.
+
+## Custom per-key limits
+
+**StoreMCP → API Keys → [key] → Rate limit**
+
+Drop it down for a less-trusted key, or raise it for a batch job.
+
+## Algorithm
+
+StoreMCP uses a token bucket: bursts up to `limit` are allowed, but the sustained rate averages the configured per-minute limit. Responses include standard headers:
+
+```text
+X-RateLimit-Limit: 120
+X-RateLimit-Remaining: 117
+X-RateLimit-Reset: 1728123456
+```
+
+When exceeded, StoreMCP returns `429 Too Many Requests` with a `Retry-After` header.
+
+## Blocking abusive keys
+
+If you see a key consuming the full bucket repeatedly, revoke it and investigate. The activity log will show which tools are being hammered.

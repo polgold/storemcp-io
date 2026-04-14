@@ -1,0 +1,46 @@
+---
+title: Customers
+description: Browse, create, update WooCommerce customers.
+tier: pro
+order: 7
+---
+
+## store_mcp_list_customers
+
+List customers with filters. **Tier:** Pro.
+
+### Parameters
+
+| Parameter | Type    | Required | Default | Description |
+|-----------|---------|----------|---------|-------------|
+| search    | string  | no       | —       | Search email, name, company |
+| role      | string  | no       | customer| `customer`, `subscriber`, `all` |
+| orderby   | string  | no       | registered_date | `id`, `name`, `registered_date` |
+| order     | string  | no       | desc    | `asc`, `desc` |
+| page      | integer | no       | 1       | Page number |
+| per_page  | integer | no       | 10      | Items per page |
+
+## store_mcp_get_customer
+
+Get a customer by ID or email. Includes total spent and last order. **Tier:** Pro.
+
+## store_mcp_get_customer_orders
+
+Order history for one customer. **Tier:** Pro.
+
+## store_mcp_create_customer
+
+Create a customer account. **Tier:** Pro.
+
+## store_mcp_update_customer
+
+Update customer details. **Tier:** Pro.
+
+## store_mcp_delete_customer
+
+Delete a customer. Optionally reassigns orders to the admin user. **Tier:** Pro.
+
+<Callout type="warning" title="GDPR">
+  Deleting a customer doesn't delete their orders. Use the WordPress
+  "erase personal data" flow for full GDPR erasure.
+</Callout>

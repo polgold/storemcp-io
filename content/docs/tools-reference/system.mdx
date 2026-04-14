@@ -1,0 +1,46 @@
+---
+title: System
+description: System-level tools — cache, search & replace, status dumps.
+tier: pro
+order: 25
+---
+
+## store_mcp_flush_cache
+
+Flush object caches and transient caches. **Tier:** Pro.
+
+### Parameters
+
+| Parameter | Type   | Required | Default | Description |
+|-----------|--------|----------|---------|-------------|
+| scope     | string | no       | all     | `all`, `object`, `transient`, `opcache`, `rewrite` |
+
+## store_mcp_search_replace
+
+Database-wide search and replace. **Tier:** Pro.
+
+### Parameters
+
+| Parameter | Type    | Required | Default | Description |
+|-----------|---------|----------|---------|-------------|
+| search    | string  | yes      | —       | String to find |
+| replace   | string  | yes      | —       | Replacement |
+| tables    | array   | no       | auto    | Tables to operate on |
+| dry_run   | boolean | no       | true    | Preview without writing |
+
+<Callout type="warning" title="Always dry-run first">
+  Ask the AI to show a dry-run diff before committing a real search-replace.
+  This is how URLs get migrated — and also how sites get nuked.
+</Callout>
+
+## store_mcp_export_system_status
+
+Export the full WooCommerce system status report. **Tier:** Pro.
+
+## store_mcp_export_activity_log
+
+Export the StoreMCP activity log as CSV or JSON. **Tier:** Agency.
+
+## store_mcp_run_scheduled_actions
+
+Trigger WooCommerce Action Scheduler. Useful for debugging stuck cron jobs. **Tier:** Pro.

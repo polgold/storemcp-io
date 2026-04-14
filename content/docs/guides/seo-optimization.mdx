@@ -1,0 +1,48 @@
+---
+title: SEO optimization
+description: Audit and improve SEO meta across your site with AI.
+tier: pro
+order: 5
+---
+
+## Full-site SEO audit
+
+```text
+"Audit every page, post, and product. For each, report: meta title length,
+meta description length, presence of focus keyword in title, and noindex flag.
+Output as a table."
+```
+
+The AI iterates `store_mcp_list_*` + `store_mcp_get_seo`.
+
+## Fix everything flagged
+
+```text
+"For every product flagged in the audit with a missing meta description,
+write one based on the product name and short description. Keep under 155
+characters. Spanish."
+```
+
+## Yoast or RankMath?
+
+StoreMCP auto-detects which SEO plugin is active and writes to the correct meta keys. You never need to specify.
+
+## Internal linking
+
+```text
+"Suggest 5 internal links from the blog post 'Top 10 Italian pastas' to
+relevant products or category pages."
+```
+
+## Structured data
+
+```text
+"Which products are missing schema.org Product markup? Fix them by setting
+the Yoast schema piece for each."
+```
+
+## Tips
+
+- Run an audit monthly — small drift compounds
+- Keep descriptions tailored to the language and market, not machine-generated
+- Flag auto-generated content with a tag for future review

@@ -1,0 +1,45 @@
+---
+title: Menus
+description: Manage WordPress navigation menus and their items.
+tier: free
+order: 16
+---
+
+## store_mcp_list_menus
+
+List all registered menus. **Tier:** Free.
+
+## store_mcp_get_menu
+
+Get a menu with all its items. **Tier:** Free.
+
+## store_mcp_create_menu
+
+Create a new menu. **Tier:** Free.
+
+## store_mcp_update_menu
+
+Rename a menu or change its location. **Tier:** Free.
+
+## store_mcp_delete_menu
+
+Delete a menu. **Tier:** Free.
+
+## store_mcp_add_menu_item
+
+Add an item (page, post, category, custom URL) to a menu. **Tier:** Free.
+
+### Parameters
+
+| Parameter | Type    | Required | Description |
+|-----------|---------|----------|-------------|
+| menu_id   | integer | yes      | Menu ID |
+| type      | string  | yes      | `post`, `page`, `category`, `custom` |
+| object_id | integer | no       | ID of the target object (for post/page/category) |
+| url       | string  | no       | Custom URL (when `type: custom`) |
+| title     | string  | yes      | Display title |
+| parent    | integer | no       | Parent item ID (for submenus) |
+
+## store_mcp_remove_menu_item
+
+Remove a menu item. **Tier:** Free.

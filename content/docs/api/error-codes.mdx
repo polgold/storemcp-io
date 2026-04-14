@@ -1,0 +1,39 @@
+---
+title: Error codes
+description: Common error codes returned by StoreMCP.
+tier: free
+order: 3
+---
+
+Every error response has this shape:
+
+```json
+{
+  "success": false,
+  "error": {
+    "code": "rate_limited",
+    "message": "Too many requests. Retry after 12s.",
+    "details": { "retry_after": 12 }
+  }
+}
+```
+
+## Common codes
+
+| Code                    | HTTP | Meaning |
+|-------------------------|------|---------|
+| `unauthorized`          | 401  | Missing or invalid credentials |
+| `revoked_key`           | 401  | Key has been revoked |
+| `forbidden`             | 403  | Key exists but lacks permission for this tool |
+| `ip_not_allowed`        | 403  | Key is IP-restricted and source IP is not allowed |
+| `not_found`             | 404  | Target object doesn't exist |
+| `validation_error`      | 422  | Parameter validation failed |
+| `rate_limited`          | 429  | Rate limit exceeded |
+| `upstream_error`        | 502  | WooCommerce / WP internal error |
+| `module_disabled`       | 409  | The tool's module is disabled |
+| `pro_required`          | 402  | This tool requires a Pro or Agency license |
+| `internal_error`        | 500  | Unhandled error — check activity log |
+
+## Debugging
+
+Enable **Debug mode** at **StoreMCP → Settings → Advanced**. Errors will include stack traces in the response and a link to the full log entry.

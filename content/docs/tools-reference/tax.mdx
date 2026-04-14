@@ -1,0 +1,50 @@
+---
+title: Tax
+description: Tax rates, classes, and settings.
+tier: pro
+order: 11
+---
+
+## store_mcp_list_tax_classes
+
+List tax classes. **Tier:** Pro.
+
+## store_mcp_create_tax_class
+
+Create a new class. **Tier:** Pro.
+
+## store_mcp_delete_tax_class
+
+Delete a class. **Tier:** Pro.
+
+## store_mcp_list_tax_rates
+
+List tax rates with filters (country, state, class). **Tier:** Pro.
+
+## store_mcp_get_tax_rate
+
+Get a single tax rate. **Tier:** Pro.
+
+## store_mcp_create_tax_rate
+
+Create a new tax rate. **Tier:** Pro.
+
+### Parameters
+
+| Parameter | Type    | Required | Description |
+|-----------|---------|----------|-------------|
+| country   | string  | yes      | ISO 2-letter country code |
+| state     | string  | no       | State/province code |
+| postcode  | string  | no       | Postcode range |
+| city      | string  | no       | City name |
+| rate      | string  | yes      | Tax rate (e.g. `21.0`) |
+| name      | string  | yes      | Display name |
+| class     | string  | no       | Tax class (defaults to standard) |
+
+## store_mcp_update_tax_rate
+
+Update a tax rate. **Tier:** Pro.
+
+## store_mcp_delete_tax_rate
+
+Delete a tax rate. **Tier:** Pro.

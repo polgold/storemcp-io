@@ -1,0 +1,44 @@
+---
+title: API keys
+description: Generate, scope, and revoke StoreMCP API keys.
+tier: free
+order: 2
+---
+
+API keys are how AI clients authenticate to your StoreMCP server.
+
+## Create a key
+
+**StoreMCP → API Keys → Create new**
+
+Each key has:
+
+- **Name** — human-readable label (e.g. "Claude Desktop")
+- **Scope** — which modules it can access (defaults to "all")
+- **Rate limit** — optional per-key override (defaults to the plan limit)
+- **Expiry** — optional auto-expiry date
+- **User** — which WordPress user the key acts as (defaults to the key creator)
+
+## Key format
+
+```text
+sk_live_51H...
+```
+
+Keys start with `sk_live_` for production sites, `sk_test_` for staging/local.
+
+## Rotate a key
+
+1. Create a new key with the same scope
+2. Update your AI client config
+3. Revoke the old key once confirmed working
+
+## Revoke a key
+
+**StoreMCP → API Keys → [key] → Revoke**
+
+Revocation is instant. Any client using the key receives a `401 revoked_key` on the next request.
+
+## Audit
+
+Every key shows: last used, number of requests last 24h/7d, and top tools used. Inspect before suspecting a breach.

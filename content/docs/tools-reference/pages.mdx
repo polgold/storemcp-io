@@ -1,0 +1,106 @@
+---
+title: Pages
+description: List, read, create, update, and delete WordPress pages.
+tier: free
+order: 13
+---
+
+Page management is available on the **Free** tier.
+
+## store_mcp_list_pages
+
+List pages.
+
+**Tier:** Free
+
+### Parameters
+
+| Parameter | Type    | Required | Default | Description |
+|-----------|---------|----------|---------|-------------|
+| search    | string  | no       | —       | Search in title |
+| status    | string  | no       | publish | `publish`, `draft`, `pending`, `private`, `trash` |
+| parent    | integer | no       | —       | Filter by parent page ID |
+| orderby   | string  | no       | date    | `date`, `title`, `menu_order` |
+| order     | string  | no       | desc    | `asc`, `desc` |
+| page      | integer | no       | 1       | Page number |
+| per_page  | integer | no       | 10      | Items per page |
+
+### Example response
+
+```json
+{
+  "success": true,
+  "data": [
+    {
+      "id": 22,
+      "title": "About",
+      "slug": "about",
+      "status": "publish",
+      "date": "2026-01-12T09:30:00",
+      "author": { "id": 1, "name": "Admin" },
+      "permalink": "https://example.com/about/"
+    }
+  ]
+}
+```
+
+## store_mcp_get_page
+
+Get a single page with full content.
+
+**Tier:** Free
+
+### Parameters
+
+| Parameter | Type    | Required | Default | Description |
+|-----------|---------|----------|---------|-------------|
+| id        | integer | no*      | —       | Page ID |
+| slug      | string  | no*      | —       | Page slug |
+
+*One of `id` or `slug` is required.*
+
+## store_mcp_create_page
+
+Create a page.
+
+**Tier:** Free
+
+### Parameters
+
+| Parameter | Type    | Required | Default | Description |
+|-----------|---------|----------|---------|-------------|
+| title     | string  | yes      | —       | Page title |
+| content   | string  | no       | —       | HTML / block content |
+| status    | string  | no       | draft   | `draft`, `publish`, `pending`, `private` |
+| slug      | string  | no       | auto    | URL slug |
+| parent    | integer | no       | 0       | Parent page ID |
+| template  | string  | no       | —       | Page template (theme-dependent) |
+| excerpt   | string  | no       | —       | Page excerpt |
+
+<Callout type="info">
+  StoreMCP accepts either classic HTML or Gutenberg block markup in the
+  `content` field.
+</Callout>
+
+## store_mcp_update_page
+
+Update a page. **Tier:** Free.
+
+Accepts the same parameters as `store_mcp_create_page` plus `id`. Any parameter omitted is left unchanged.
+
+## store_mcp_delete_page
+
+Delete a page. **Tier:** Free.
+
+### Parameters
+
+| Parameter | Type    | Required | Default | Description |
+|-----------|---------|----------|---------|-------------|
+| id        | integer | yes      | —       | Page ID |
+| force     | boolean | no       | false   | Permanently delete |
+
+## Related
+
+- [Posts](/docs/tools-reference/posts)
+- [Menus](/docs/tools-reference/menus)
+- [SEO](/docs/tools-reference/seo)

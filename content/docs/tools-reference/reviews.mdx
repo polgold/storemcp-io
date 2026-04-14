@@ -1,0 +1,41 @@
+---
+title: Reviews
+description: Read and moderate product reviews and comments.
+tier: free
+order: 19
+---
+
+## store_mcp_list_reviews
+
+List product reviews with filters. **Tier:** Free.
+
+### Parameters
+
+| Parameter | Type    | Required | Default | Description |
+|-----------|---------|----------|---------|-------------|
+| product   | integer | no       | —       | Product ID |
+| status    | string  | no       | approved| `approved`, `hold`, `spam`, `trash`, `all` |
+| rating    | integer | no       | —       | 1–5 |
+| reviewer_email | string | no  | —       | Reviewer email |
+| page      | integer | no       | 1       | Page number |
+| per_page  | integer | no       | 10      | Items per page |
+
+## store_mcp_get_review
+
+Get a single review. **Tier:** Free.
+
+## store_mcp_update_review_status
+
+Approve, mark as spam, trash, or restore. **Tier:** Free.
+
+## store_mcp_reply_to_review
+
+Post a store reply to a review. **Tier:** Free.
+
+## store_mcp_delete_review
+
+Delete a review. **Tier:** Free.
+
+## store_mcp_list_comments
+
+List WordPress comments (non-review). **Tier:** Free.

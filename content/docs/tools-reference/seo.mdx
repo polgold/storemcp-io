@@ -1,0 +1,59 @@
+---
+title: SEO
+description: Read and update SEO meta fields — Yoast and RankMath compatible.
+tier: pro
+order: 20
+---
+
+StoreMCP detects whether Yoast SEO or RankMath is installed and writes to the correct meta keys automatically.
+
+## store_mcp_get_seo
+
+Get the SEO meta for a page, post, product, category, or tag. **Tier:** Pro.
+
+### Parameters
+
+| Parameter  | Type    | Required | Description |
+|------------|---------|----------|-------------|
+| object_type| string  | yes      | `post`, `page`, `product`, `category`, `tag` |
+| object_id  | integer | yes      | Object ID |
+
+### Example response
+
+```json
+{
+  "success": true,
+  "data": {
+    "title": "Agua Mineral 750ml — Italmarket",
+    "description": "Agua natural embotellada en origen, importada desde Italia.",
+    "focus_keyword": "agua mineral italiana",
+    "canonical": "https://italmarket.com.ar/producto/agua-mineral-750ml/",
+    "og_title": null,
+    "og_description": null,
+    "noindex": false,
+    "provider": "yoast"
+  }
+}
+```
+
+## store_mcp_update_seo
+
+Update SEO meta fields. **Tier:** Pro.
+
+Accepts any combination of: `title`, `description`, `focus_keyword`, `canonical`, `og_title`, `og_description`, `og_image`, `twitter_title`, `twitter_description`, `twitter_image`, `noindex`, `nofollow`.
+
+## store_mcp_analyze_seo
+
+Run a quick SEO health check on an object (title length, meta description, H1, image alts, internal links). **Tier:** Pro.
+
+### Example prompt
+
+> "Audit the SEO on product 4371 and suggest improvements."
+
+## store_mcp_bulk_update_seo
+
+Update SEO for many objects in one call. **Tier:** Pro.
+
+## Related
+
+- [SEO optimization guide](/docs/guides/seo-optimization)

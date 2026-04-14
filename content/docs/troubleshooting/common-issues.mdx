@@ -1,0 +1,46 @@
+---
+title: Common issues
+description: The top issues and their fixes.
+tier: free
+order: 1
+---
+
+## "Unauthorized" when connecting
+
+- Confirm the key is copied with no trailing whitespace
+- Confirm the site uses HTTPS (StoreMCP refuses HTTP in production)
+- Confirm the key hasn't been revoked (check **StoreMCP → API Keys**)
+
+## "Tools missing" — client sees no tools
+
+- Confirm the module is enabled at **StoreMCP → Modules**
+- Confirm the acting user has the right capabilities (see [permissions](/docs/security/permissions))
+- Some AI clients cache tool lists — restart the client
+
+## Slow responses
+
+- Check your site's PHP memory limit (recommend 256M+)
+- Enable StoreMCP's query cache (**StoreMCP → Settings → Cache**)
+- Reports over large date ranges are slower — narrow the window
+
+## `validation_error` on create/update
+
+- Check the parameter types (numbers vs strings)
+- Required fields are listed in each tool's reference page
+- For products with variations, create the parent as `type: variable` first
+
+## Changes don't show on the frontend
+
+- Flush the site's page cache (e.g. `wp cache flush` or your CDN)
+- If using a static host (e.g. WPCloud, Rocket), trigger a rebuild
+
+## "Pro required"
+
+The tool you're calling is Pro-only. Activate a license at **StoreMCP → License** or work around it with Free tools.
+
+## Still stuck?
+
+- [Connection errors](/docs/troubleshooting/connection-errors)
+- [WooCommerce issues](/docs/troubleshooting/woocommerce-issues)
+- [Debug mode](/docs/troubleshooting/debug-mode)
+- Email support: [hello@storemcp.io](mailto:hello@storemcp.io)

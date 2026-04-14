@@ -1,0 +1,51 @@
+---
+title: Best practices
+description: Security-first defaults for running StoreMCP in production.
+tier: free
+order: 4
+---
+
+A short checklist, ordered by impact:
+
+## 1. One key per client
+
+Claude.ai, ChatGPT, Cursor, and that batch job all get their own key. Revoke in isolation.
+
+## 2. Least privilege
+
+Use a dedicated WordPress user with only the capabilities you need. Don't point keys at an admin account.
+
+## 3. Disable unused modules
+
+If you don't use coupons, disable the module. Fewer surfaces to audit.
+
+## 4. Enforce HTTPS
+
+StoreMCP refuses plain HTTP in production. Double-check your site has a valid certificate and HSTS is on.
+
+## 5. Rotate keys quarterly
+
+Old keys accumulate privilege drift. Rotate on a schedule.
+
+## 6. Review the activity log weekly
+
+Any unfamiliar tool call or spike is worth a closer look.
+
+## 7. Use IP allow-lists (Pro)
+
+For keys that live in fixed infrastructure (CI, a known office, a cloud function), pin them to source IPs.
+
+## 8. Watch out for prompt injection
+
+If your AI is reading public content (e.g. product reviews) and has write tools available, an attacker could inject instructions into a review. Mitigations:
+
+- Keep "read public content" and "write" keys separate — a key that reads reviews shouldn't also be able to refund orders.
+- Use Agency roles to enforce this split.
+
+## 9. Keep StoreMCP updated
+
+Security patches are released as point versions. Enable auto-updates on Pro/Agency.
+
+## 10. Have a kill-switch
+
+If something goes wrong, deactivate StoreMCP from `wp-admin/plugins.php` — or drop a `.storemcp-kill` file in your site root to disable the MCP endpoint without touching plugins.

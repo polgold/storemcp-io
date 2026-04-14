@@ -1,0 +1,54 @@
+---
+title: MCP protocol
+description: How StoreMCP implements the Model Context Protocol.
+tier: free
+order: 1
+---
+
+StoreMCP is a compliant [Model Context Protocol](https://modelcontextprotocol.io) server. It speaks standard MCP over HTTP with JSON-RPC 2.0 framing.
+
+## Transport
+
+StoreMCP uses the **HTTP streamable** transport. Both request/response and streaming are supported — results from long-running tools come back as incremental messages.
+
+## Endpoint
+
+```text
+POST https://your-site.com/wp-json/storemcp/v1/mcp
+Content-Type: application/json
+Authorization: Bearer sk_live_...
+```
+
+## Capabilities
+
+StoreMCP advertises these capabilities during `initialize`:
+
+- `tools` — full MCP tools API
+- `resources` — read-only endpoints for site metadata (enabled on Pro)
+- `prompts` — suggested prompts for common tasks (enabled on Pro)
+
+## Tools
+
+Tool names are always prefixed `store_mcp_`. Parameter schemas follow JSON Schema Draft 2020-12.
+
+## Resources (Pro)
+
+Exposed resources include:
+
+- `storemcp://site/info` — site info
+- `storemcp://products/{id}` — a specific product
+- `storemcp://orders/recent` — last 50 orders
+
+## Prompts (Pro)
+
+Pre-built prompts:
+
+- `daily-standup` — yesterday's orders and KPIs
+- `seo-audit` — full-site SEO audit
+- `low-stock-alert` — products below threshold
+
+Use them from your AI client:
+
+```text
+/prompt storemcp/daily-standup
+```

@@ -1,0 +1,42 @@
+---
+title: Bulk operations
+description: Update many products, categories, or SEO fields in a single AI interaction.
+tier: pro
+order: 4
+---
+
+Bulk operations are what turn a 3-hour admin task into a 30-second chat.
+
+## Bulk price update
+
+```text
+"Raise every product in 'Vinos' by 12%, rounded to the nearest peso."
+```
+
+## Bulk stock adjustment
+
+```text
+"Set stock to 0 for every product with SKU starting 'OLD-'."
+```
+
+## Bulk SEO write
+
+```text
+"Write meta titles and descriptions in Spanish for the 40 products that
+currently have none. Include the product name and category."
+```
+
+## Bulk category move
+
+```text
+"Move every product currently tagged 'pascua' into the category 'Temporada /
+Pascua 2026'."
+```
+
+## Safety rules
+
+- **Always preview first.** Ask the AI to show the first 5 items before
+  applying.
+- **Set `dry_run: true` on system ops.** Especially on search-replace.
+- **Tag AI edits.** Add a tag like `ai-edit-2026-04` to every bulk-edited
+  object so you can list or revert later.

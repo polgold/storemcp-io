@@ -1,0 +1,79 @@
+---
+title: First commands
+description: Ten prompts to verify StoreMCP is working and to see what's possible.
+tier: free
+order: 6
+---
+
+Once you've connected an AI client to StoreMCP, try these prompts in order. Each one exercises a different module.
+
+## 1. Confirm the connection
+
+> What tools do you have from the storemcp server?
+
+You should see a list. If you don't, check [connection errors](/docs/troubleshooting/connection-errors).
+
+## 2. Read site info
+
+> What WordPress version and WooCommerce version is this site running?
+
+Uses: `store_mcp_get_site_info`
+
+## 3. List recent products
+
+> Show me my 5 most recently added products with their prices and stock.
+
+Uses: `store_mcp_list_products`
+
+## 4. Read a specific product
+
+> Get the full details for product with SKU "MIN-750-AGUA".
+
+Uses: `store_mcp_get_product`
+
+## 5. Recent orders (Pro)
+
+> List the 10 most recent orders and their statuses.
+
+Uses: `store_mcp_list_orders` *(Pro)*
+
+## 6. Sales snapshot (Pro)
+
+> Give me total revenue for the last 7 days versus the previous 7 days.
+
+Uses: `store_mcp_report_sales` *(Pro)*
+
+## 7. Top sellers
+
+> What are my top 5 best-selling products this month?
+
+Uses: `store_mcp_report_top_sellers`
+
+## 8. Pages overview
+
+> How many pages does this site have and what are their titles?
+
+Uses: `store_mcp_list_pages`
+
+## 9. Create a page
+
+> Create a draft page titled "Shipping Policy" with a short intro about our shipping times in Argentina.
+
+Uses: `store_mcp_create_page`
+
+<Callout type="warning" title="Start with drafts">
+  When trying write operations for the first time, ask the AI to create things
+  in "draft" status so you can review before publishing.
+</Callout>
+
+## 10. Low stock alert (Pro)
+
+> Which products have stock below 10 units?
+
+Uses: `store_mcp_report_low_stock` *(Pro)*
+
+## What next?
+
+- Read the [tools reference](/docs/tools-reference/products) for complete parameter lists
+- Explore [guides](/docs/guides/managing-products) for full workflows
+- Review [security best practices](/docs/security/best-practices) before sharing keys

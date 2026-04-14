@@ -1,0 +1,50 @@
+---
+title: Managing products
+description: Complete workflow for creating, updating, and bulk-editing products through AI.
+tier: free
+order: 1
+---
+
+Product management is where StoreMCP earns its keep. This guide walks through a realistic product workflow from the AI side.
+
+## Create a new product
+
+```text
+"Create a draft product called 'Pesto Genovese 190g' at $6.50. SKU: PES-190-GEN.
+Category: Salsas. Add 30 units of stock. Description: classic Ligurian basil
+pesto, DOP-style, no preservatives."
+```
+
+The AI will call `store_mcp_create_product` with the right shape. Always start with `status: draft` when creating something new — you can publish it from the WordPress admin after reviewing.
+
+## Bulk price changes
+
+```text
+"Increase the regular_price of every product in the 'Pastas' category by 8%,
+rounded to the nearest 10 cents. Show me the list before applying."
+```
+
+This uses `store_mcp_list_products` with `category` filter, computes the new prices locally in the AI, then calls `store_mcp_bulk_update_products`. Always ask for the list first.
+
+## Publish a scheduled discount
+
+```text
+"Put all products tagged 'pascua' on 15% sale from April 20 to April 25."
+```
+
+The AI sets `sale_price`, `date_on_sale_from`, `date_on_sale_to` on each tagged product. If you miss the window, the prices revert automatically.
+
+## Fix missing SEO data
+
+```text
+"Find all products with no meta description and write one for each based on
+the product name and short description. Keep it under 155 characters."
+```
+
+The AI lists products, checks `store_mcp_get_seo` for each, and writes a meta description via `store_mcp_update_seo`.
+
+## Tips
+
+- Prefer `dry_run` previews for anything that touches many products
+- Keep an "AI-edit" tag so you can roll back easily if the AI makes a mistake
+- For structured imports (CSVs), ask the AI to transform the CSV to a batch update call first

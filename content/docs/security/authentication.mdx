@@ -1,0 +1,39 @@
+---
+title: Authentication
+description: How StoreMCP authenticates incoming MCP requests.
+tier: free
+order: 1
+---
+
+StoreMCP supports two authentication mechanisms.
+
+## API keys (recommended)
+
+- Generated via **StoreMCP → API Keys**
+- Passed as `Authorization: Bearer sk_live_...`
+- Scoped to specific modules
+- Rate-limited per key
+- Revokable instantly
+
+## Application Passwords
+
+- WordPress-native, available since WP 5.6
+- Generated per user at **Users → Profile → Application Passwords**
+- Passed as HTTP Basic auth: `Authorization: Basic base64(user:app_password)`
+- Scoped to that user's capabilities — StoreMCP requires `manage_woocommerce`
+  (for WooCommerce tools) or `edit_pages` (for content tools)
+
+## Which to choose
+
+- **API keys** — preferred. Scoped, revokable, auditable.
+- **Application Passwords** — fine for personal sites where the WordPress user
+  already has exactly the right capabilities.
+
+<Callout type="warning" title="Never commit keys">
+  API keys shouldn't live in git repos. Use environment variables or a secret
+  manager in production.
+</Callout>
+
+## TLS
+
+HTTPS is required. StoreMCP rejects HTTP connections. In local development you can set `STOREMCP_ALLOW_HTTP` to `true` in `wp-config.php`, but never in production.

@@ -1,0 +1,39 @@
+---
+title: Activity log
+description: Inspect every tool call made against your site.
+tier: free
+order: 4
+---
+
+Every tool invocation is recorded. The activity log is available under **StoreMCP → Activity**.
+
+## Columns
+
+- Timestamp
+- API key (name, not value)
+- WordPress user the call acted as
+- Tool name
+- HTTP status
+- Latency (ms)
+- Request size / response size
+
+## Filters
+
+- By tool name
+- By status (success / error / rate-limited / unauthorized)
+- By API key
+- By date range
+
+## Retention
+
+- **Free** — 7 days
+- **Pro** — 90 days
+- **Agency** — 365 days with CSV/JSON export
+
+## Export (Agency)
+
+**StoreMCP → Activity → Export** produces a ZIP with CSV and JSON files. Useful for audit and SOC2 evidence.
+
+## Privacy
+
+The log never stores request or response bodies (which may contain PII). Only metadata.

@@ -1,0 +1,124 @@
+{
+  "nav": {
+    "features": "Features",
+    "pricing": "Pricing",
+    "docs": "Documentation",
+    "blog": "Blog",
+    "changelog": "Changelog",
+    "support": "Support",
+    "account": "Account",
+    "download": "Download Free",
+    "getPro": "Get Pro"
+  },
+  "hero": {
+    "badge": "Now in Public Beta",
+    "title": "Control your entire WordPress site from AI",
+    "subtitle": "StoreMCP connects WordPress & WooCommerce to Claude, ChatGPT, Cursor and any MCP-compatible AI client. Products, orders, pages, analytics — all through natural language.",
+    "ctaPrimary": "Download Free",
+    "ctaSecondary": "View Documentation"
+  },
+  "features": {
+    "title": "What you can do",
+    "subtitle": "Every operation you need, exposed as a single tool call."
+  },
+  "howItWorks": {
+    "title": "How it works",
+    "subtitle": "From install to AI control in under five minutes.",
+    "step1Title": "Install",
+    "step1Desc": "Install StoreMCP from wordpress.org. Activate and generate your API key.",
+    "step2Title": "Connect",
+    "step2Desc": "Add your MCP server URL to Claude, ChatGPT, Cursor, or any MCP client.",
+    "step3Title": "Control",
+    "step3Desc": "Ask anything. Your AI assistant now has full access to your WordPress site."
+  },
+  "woocommerce": {
+    "title": "Built for WooCommerce",
+    "tools": "120+ tools",
+    "desc": "The most comprehensive MCP server for WordPress & WooCommerce. From product management to advanced sales analytics, StoreMCP covers every operation you need."
+  },
+  "compatible": {
+    "title": "Compatible with",
+    "subtitle": "Works with every MCP-capable AI client in use today.",
+    "any": "Any MCP-compatible client"
+  },
+  "opensource": {
+    "title": "Open source core",
+    "desc": "StoreMCP's free tier is open source and available on wordpress.org. We believe in transparency and community.",
+    "github": "View on GitHub",
+    "wporg": "wordpress.org listing"
+  },
+  "pricing": {
+    "title": "Simple pricing",
+    "subtitle": "Free forever for personal sites. Pro for stores. Agency for fleets.",
+    "perSite": "per site",
+    "perYear": "/ year",
+    "mostPopular": "Most popular",
+    "moneyBack": "14-day money-back guarantee",
+    "viewAll": "Compare plans",
+    "free": {
+      "name": "Free",
+      "price": "$0",
+      "tag": "forever",
+      "desc": "For personal sites and small blogs",
+      "cta": "Download Free"
+    },
+    "pro": {
+      "name": "Pro",
+      "price": "$99",
+      "tag": "per site · per year",
+      "desc": "For stores and businesses that need full control",
+      "cta": "Get Pro"
+    },
+    "agency": {
+      "name": "Agency",
+      "price": "$299",
+      "tag": "per year · unlimited sites",
+      "desc": "For agencies and freelancers managing multiple clients",
+      "cta": "Get Agency"
+    },
+    "everythingIn": "Everything in",
+    "plus": "plus:",
+    "faqTitle": "Pricing questions"
+  },
+  "footer": {
+    "product": "Product",
+    "resources": "Resources",
+    "company": "Company",
+    "legal": "Legal",
+    "features": "Features",
+    "pricing": "Pricing",
+    "docs": "Documentation",
+    "changelog": "Changelog",
+    "blog": "Blog",
+    "faq": "FAQ",
+    "support": "Support",
+    "about": "About ExitMedia",
+    "contact": "Contact",
+    "twitter": "Instagram",
+    "privacy": "Privacy",
+    "terms": "Terms",
+    "madeBy": "Made by",
+    "tagline": "AI control center for WordPress & WooCommerce.",
+    "rights": "All rights reserved."
+  },
+  "newsletter": {
+    "title": "Get updates on new features",
+    "subtitle": "No spam. Release notes and the occasional tip.",
+    "placeholder": "you@example.com",
+    "submit": "Subscribe",
+    "success": "Thanks — you're on the list."
+  },
+  "common": {
+    "learnMore": "Learn more",
+    "getStarted": "Get started",
+    "free": "FREE",
+    "pro": "PRO",
+    "agency": "AGENCY",
+    "new": "NEW",
+    "copy": "Copy",
+    "copied": "Copied",
+    "searchDocs": "Search docs…",
+    "onThisPage": "On this page",
+    "edit": "Edit on GitHub"
+  }
+}

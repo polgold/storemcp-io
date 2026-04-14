@@ -1,0 +1,46 @@
+---
+title: Multi-site setup
+description: Connect multiple WordPress sites to a single AI workspace.
+tier: pro
+order: 6
+---
+
+## Connecting multiple sites
+
+Each WordPress site runs its own StoreMCP instance. To manage many sites from one AI client, add each as a separate MCP server:
+
+```json
+{
+  "mcpServers": {
+    "italmarket": {
+      "url": "https://italmarket.com.ar/wp-json/storemcp/v1/mcp",
+      "headers": { "Authorization": "Bearer sk_live_..." }
+    },
+    "artesanias": {
+      "url": "https://artesanias.ar/wp-json/storemcp/v1/mcp",
+      "headers": { "Authorization": "Bearer sk_live_..." }
+    }
+  }
+}
+```
+
+The AI will namespace tools by server: `italmarket/store_mcp_list_products`, `artesanias/store_mcp_list_products`.
+
+## Typical prompts
+
+```text
+"Compare this week's revenue across italmarket and artesanias."
+```
+
+```text
+"In italmarket, list products that are also present in artesanias by SKU."
+```
+
+## License coverage
+
+- Pro covers up to 5 sites per license
+- Agency is unlimited
+
+## Staging + production
+
+Use a separate key per environment so you can revoke staging without touching prod. Prefix the site name in the MCP server name (e.g. `italmarket-staging`) so it's obvious in the AI chat.

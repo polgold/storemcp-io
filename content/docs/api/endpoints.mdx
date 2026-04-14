@@ -1,0 +1,44 @@
+---
+title: Endpoints
+description: The HTTP endpoints exposed by StoreMCP.
+tier: free
+order: 2
+---
+
+Most users only need the MCP endpoint. The others are useful for integrations and debugging.
+
+## POST `/wp-json/storemcp/v1/mcp`
+
+The MCP server. Accepts JSON-RPC 2.0 over HTTP. All AI clients connect here.
+
+## GET `/wp-json/storemcp/v1/health`
+
+Unauthenticated health check:
+
+```json
+{
+  "status": "ok",
+  "version": "1.0.0",
+  "wordpress": "6.5.2",
+  "woocommerce": "9.2.3"
+}
+```
+
+## GET `/wp-json/storemcp/v1/info`
+
+Authenticated: full server info including active modules.
+
+## GET `/wp-json/storemcp/v1/tools`
+
+Authenticated: list of tool names available to the caller's scope. Handy to sanity-check what an AI client will see.
+
+## POST `/wp-json/storemcp/v1/test`
+
+Authenticated: invoke a single tool without the MCP framing. Useful for curl-based testing.
+
+```bash
+curl -X POST https://your-site.com/wp-json/storemcp/v1/test \
+  -H "Authorization: Bearer sk_live_..." \
+  -H "Content-Type: application/json" \
+  -d '{"tool": "store_mcp_get_site_info", "params": {}}'
+```

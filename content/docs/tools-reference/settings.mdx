@@ -1,0 +1,46 @@
+---
+title: Settings
+description: Read and update WooCommerce store settings.
+tier: pro
+order: 12
+---
+
+## store_mcp_list_settings_groups
+
+List all settings groups (General, Products, Tax, Shipping, Payments, Accounts, Emails, Advanced). **Tier:** Pro.
+
+## store_mcp_get_settings
+
+Get settings for one group. **Tier:** Pro.
+
+### Parameters
+
+| Parameter | Type   | Required | Description |
+|-----------|--------|----------|-------------|
+| group     | string | yes      | Settings group ID (e.g. `general`, `products`) |
+
+## store_mcp_update_setting
+
+Update a single setting value. **Tier:** Pro.
+
+### Parameters
+
+| Parameter | Type   | Required | Description |
+|-----------|--------|----------|-------------|
+| group     | string | yes      | Group ID |
+| id        | string | yes      | Setting ID |
+| value     | any    | yes      | New value (type matches the setting) |
+
+## store_mcp_list_payment_gateways
+
+List payment gateways with enabled/disabled state. **Tier:** Pro.
+
+## store_mcp_update_payment_gateway
+
+Enable/disable or configure a gateway. **Tier:** Pro.
+
+<Callout type="warning" title="Handle API keys carefully">
+  Gateway settings often include API keys. StoreMCP never logs them in the
+  activity log, but your AI conversation may contain them — treat chats as
+  sensitive when working with payment settings.
+</Callout>

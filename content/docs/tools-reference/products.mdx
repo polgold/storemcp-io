@@ -1,0 +1,174 @@
+---
+title: Products
+description: Tools for listing, reading, creating, updating and deleting WooCommerce products.
+tier: free
+order: 1
+---
+
+Products are the core of any WooCommerce store. StoreMCP exposes the full CRUD surface as a set of MCP tools.
+
+Read-only tools are available on the **Free** tier. Create / update / delete operations require **Pro**.
+
+## store_mcp_list_products
+
+List products with filters and pagination.
+
+**Tier:** Free
+
+### Parameters
+
+| Parameter     | Type    | Required | Default | Description |
+|---------------|---------|----------|---------|-------------|
+| search        | string  | no       | —       | Search by product name or SKU |
+| category      | integer | no       | —       | Filter by category ID |
+| status        | string  | no       | publish | `publish`, `draft`, `pending`, `trash` |
+| type          | string  | no       | —       | `simple`, `variable`, `grouped`, `external` |
+| on_sale       | boolean | no       | —       | Only products currently on sale |
+| min_price     | number  | no       | —       | Minimum price filter |
+| max_price     | number  | no       | —       | Maximum price filter |
+| stock_status  | string  | no       | —       | `instock`, `outofstock`, `onbackorder` |
+| orderby       | string  | no       | date    | `date`, `title`, `price`, `popularity`, `rating` |
+| order         | string  | no       | desc    | `asc`, `desc` |
+| page          | integer | no       | 1       | Page number |
+| per_page      | integer | no       | 10      | Items per page (max 100) |
+
+### Example prompt
+
+> "Show me all products on sale under $50, sorted by popularity."
+
+### Example response
+
+```json
+{
+  "success": true,
+  "data": [
+    {
+      "id": 4371,
+      "name": "Agua Mineral 750ml",
+      "sku": "MIN-750-AGUA",
+      "price": 2.50,
+      "regular_price": 3.00,
+      "sale_price": 2.50,
+      "on_sale": true,
+      "stock_status": "instock",
+      "stock_quantity": 150,
+      "categories": [{ "id": 15, "name": "Bebidas" }],
+      "images": [{ "src": "https://cdn.example.com/agua.jpg" }],
+      "permalink": "https://example.com/producto/agua-mineral-750ml/"
+    }
+  ],
+  "meta": { "total": 23, "pages": 3, "page": 1, "per_page": 10 }
+}
+```
+
+## store_mcp_get_product
+
+Get full details for a single product by ID or SKU.
+
+**Tier:** Free
+
+### Parameters
+
+| Parameter | Type    | Required | Default | Description |
+|-----------|---------|----------|---------|-------------|
+| id        | integer | no*      | —       | Product ID |
+| sku       | string  | no*      | —       | Product SKU |
+
+*One of `id` or `sku` is required.*
+
+### Example response
+
+Returns the full product object including meta, attributes, variations (IDs), tags, images, downloads, and tax settings.
+
+## store_mcp_create_product
+
+Create a new product.
+
+**Tier:** Pro
+
+### Parameters (most common)
+
+| Parameter       | Type    | Required | Default | Description |
+|-----------------|---------|----------|---------|-------------|
+| name            | string  | yes      | —       | Product name |
+| type            | string  | no       | simple  | `simple`, `variable`, `grouped`, `external` |
+| status          | string  | no       | draft   | `draft`, `publish`, `pending` |
+| regular_price   | string  | no       | —       | Regular price |
+| sale_price      | string  | no       | —       | Sale price |
+| sku             | string  | no       | —       | Unique SKU |
+| description     | string  | no       | —       | Long description (HTML) |
+| short_description | string | no      | —       | Short description |
+| categories      | array   | no       | —       | Array of category IDs |
+| tags            | array   | no       | —       | Array of tag IDs |
+| images          | array   | no       | —       | Array of `{ src }` objects |
+| attributes      | array   | no       | —       | Attribute definitions |
+| manage_stock    | boolean | no       | false   | Enable stock management |
+| stock_quantity  | integer | no       | —       | Stock quantity |
+
+### Example prompt
+
+> "Create a draft product called 'Aceite de Oliva Virgen 500ml' at $8.50, category Aceites, stock 40."
+
+### Example response
+
+```json
+{
+  "success": true,
+  "data": {
+    "id": 4412,
+    "name": "Aceite de Oliva Virgen 500ml",
+    "status": "draft",
+    "price": "8.50",
+    "sku": "",
+    "permalink": "https://example.com/?p=4412"
+  }
+}
+```
+
+## store_mcp_update_product
+
+Update an existing product by ID.
+
+**Tier:** Pro
+
+Accepts the same parameters as `store_mcp_create_product` plus an `id` field. Any parameter omitted is left unchanged.
+
+### Example prompt
+
+> "Put product ID 4371 on sale at $2.20 until the end of the month."
+
+## store_mcp_delete_product
+
+Delete a product.
+
+**Tier:** Pro
+
+### Parameters
+
+| Parameter | Type    | Required | Default | Description |
+|-----------|---------|----------|---------|-------------|
+| id        | integer | yes      | —       | Product ID |
+| force     | boolean | no       | false   | Permanently delete (skip trash) |
+
+<Callout type="warning" title="Irreversible">
+  `force: true` permanently removes the product. Without it, the product
+  moves to trash and can be restored.
+</Callout>
+
+## store_mcp_bulk_update_products
+
+Update many products in a single call. **Tier:** Pro.
+
+### Parameters
+
+| Parameter | Type   | Required | Description |
+|-----------|--------|----------|-------------|
+| updates   | array  | yes      | Array of `{ id, ...fields }` |
+
+Useful for mass price changes, stock adjustments, status flips, or re-categorization. Returns a per-item success report.
+
+## Related
+
+- [Variations](/docs/tools-reference/variations) — for variable product variations
+- [Categories](/docs/tools-reference/categories) — for product taxonomies
+- [Managing products guide](/docs/guides/managing-products)

@@ -1,0 +1,71 @@
+---
+title: Site info
+description: Tools to inspect the WordPress site, health, and environment.
+tier: free
+order: 21
+---
+
+## store_mcp_get_site_info
+
+Read basic site information.
+
+**Tier:** Free
+
+Takes no parameters.
+
+### Example response
+
+```json
+{
+  "success": true,
+  "data": {
+    "name": "Italmarket",
+    "description": "Italian products in Argentina",
+    "url": "https://italmarket.com.ar",
+    "admin_email": "hello@italmarket.com.ar",
+    "language": "es_AR",
+    "timezone": "America/Argentina/Buenos_Aires",
+    "wordpress_version": "6.5.2",
+    "php_version": "8.2.10",
+    "mysql_version": "8.0.35",
+    "active_theme": {
+      "name": "Twenty Twenty-Five",
+      "version": "1.0",
+      "template": "twentytwentyfive"
+    },
+    "woocommerce": {
+      "installed": true,
+      "active": true,
+      "version": "9.2.3",
+      "currency": "ARS"
+    },
+    "storemcp": {
+      "version": "1.0.0",
+      "tier": "pro"
+    }
+  }
+}
+```
+
+## store_mcp_get_health_check
+
+WordPress site health summary (equivalent to the Tools → Site Health screen).
+
+**Tier:** Free
+
+Takes no parameters.
+
+Returns an array of checks (recommended / good / critical) with descriptions.
+
+## store_mcp_get_system_status
+
+Detailed system diagnostics — PHP limits, active plugins, theme, database.
+
+**Tier:** Pro
+
+Takes no parameters. Useful for troubleshooting before filing support tickets.
+
+## Related
+
+- [Plugins](/docs/tools-reference/plugins)
+- [System](/docs/tools-reference/system)

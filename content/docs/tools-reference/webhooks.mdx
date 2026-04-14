@@ -1,0 +1,40 @@
+---
+title: Webhooks
+description: Create and manage WooCommerce webhooks.
+tier: pro
+order: 23
+---
+
+## store_mcp_list_webhooks
+
+List all webhooks with status. **Tier:** Pro.
+
+## store_mcp_get_webhook
+
+Get a webhook with its delivery log. **Tier:** Pro.
+
+## store_mcp_create_webhook
+
+Create a webhook. **Tier:** Pro.
+
+### Parameters
+
+| Parameter | Type   | Required | Description |
+|-----------|--------|----------|-------------|
+| name      | string | yes      | Display name |
+| topic     | string | yes      | e.g. `order.created`, `product.updated` |
+| delivery_url | string | yes   | POST URL |
+| secret    | string | no       | HMAC secret (auto-generated if omitted) |
+| status    | string | no       | `active`, `paused`, `disabled` |
+
+## store_mcp_update_webhook
+
+Update a webhook. **Tier:** Pro.
+
+## store_mcp_delete_webhook
+
+Delete a webhook. **Tier:** Pro.
+
+## store_mcp_retry_webhook_delivery
+
+Retry a failed delivery. **Tier:** Pro.

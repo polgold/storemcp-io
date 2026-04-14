@@ -1,0 +1,46 @@
+---
+title: Processing orders
+description: Handle the full order lifecycle — intake, fulfillment, refunds — through AI.
+tier: pro
+order: 2
+---
+
+## Daily triage
+
+```text
+"Show me every order stuck in 'on-hold' for more than 24 hours and why."
+```
+
+The AI reads each stale order, inspects notes, and summarizes.
+
+## Mark orders complete after shipping
+
+```text
+"Mark orders 18402, 18405, 18417 as completed. Add a shipping note with
+tracking number AR123456789AR to each."
+```
+
+Two tool calls per order: `store_mcp_update_order_status` and `store_mcp_add_order_note` with `customer_note: true` so the customer receives the tracking email.
+
+## Handle a refund request
+
+```text
+"Customer Maria (order 18402) wants to return one Tiramisú Dolceria. Refund
+that line item and email her that the refund is processed."
+```
+
+The AI computes the refund amount from the line item, calls `store_mcp_refund_order` with `api_refund: true`, then adds a customer-visible note.
+
+## Chargeback triage
+
+```text
+"List orders paid via Stripe with a 'disputed' tag from the last 30 days.
+Show customer name, amount, and product."
+```
+
+## Tips
+
+- Staff routinely dealing with chargebacks benefit most from Pro — the
+  all-in-one query saves hours every week.
+- Use [webhooks](/docs/tools-reference/webhooks) alongside to notify Slack when
+  the AI flags an anomaly.

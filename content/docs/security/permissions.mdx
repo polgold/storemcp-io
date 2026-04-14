@@ -1,0 +1,37 @@
+---
+title: Permissions
+description: How StoreMCP maps tool access to WordPress capabilities.
+tier: free
+order: 2
+---
+
+Every tool maps to one or more WordPress capabilities. The acting user (the user associated with the API key or Application Password) must have them all.
+
+## Capability matrix (summary)
+
+| Tool group     | Required capability |
+|----------------|---------------------|
+| Products       | `edit_products` (read) / `publish_products` (write) |
+| Orders         | `manage_woocommerce` |
+| Customers      | `manage_woocommerce` |
+| Coupons        | `manage_woocommerce` |
+| Pages / Posts  | `edit_pages` / `edit_posts` |
+| Media          | `upload_files` |
+| Users          | `list_users` (read) / `create_users` / `delete_users` |
+| Plugins        | `activate_plugins` / `install_plugins` |
+| Settings       | `manage_options` |
+| System         | `manage_options` + `manage_woocommerce` |
+
+## Principle of least privilege
+
+Create a dedicated WordPress user for AI access, with only the capabilities needed. Bind the API key to that user.
+
+## Custom roles (Agency)
+
+Agency tier lets you define arbitrary "MCP roles" — a named bundle of allowed tools that you can attach to any API key. For example:
+
+- `content-editor` → pages, posts, media, menus
+- `store-analyst` → reports, products (read), orders (read)
+- `finance` → orders, refunds, reports
+
+Manage roles at **StoreMCP → Roles** (Agency only).

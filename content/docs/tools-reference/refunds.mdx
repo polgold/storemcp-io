@@ -1,0 +1,41 @@
+---
+title: Refunds
+description: Issue and track WooCommerce refunds.
+tier: pro
+order: 24
+---
+
+## store_mcp_list_refunds
+
+List refunds across orders. **Tier:** Pro.
+
+### Parameters
+
+| Parameter | Type    | Required | Default | Description |
+|-----------|---------|----------|---------|-------------|
+| order     | integer | no       | —       | Filter by order ID |
+| after     | string  | no       | —       | ISO date |
+| before    | string  | no       | —       | ISO date |
+| page      | integer | no       | 1       | Page number |
+| per_page  | integer | no       | 10      | Items per page |
+
+## store_mcp_get_refund
+
+Get a refund record with line items. **Tier:** Pro.
+
+## store_mcp_create_refund
+
+Create a refund. Alias for `store_mcp_refund_order`. **Tier:** Pro.
+
+### Parameters
+
+See [Orders → refund_order](/docs/tools-reference/orders#store_mcp_refund_order).
+
+## store_mcp_delete_refund
+
+Delete a refund record (does not reverse the gateway refund). **Tier:** Pro.
+
+<Callout type="warning">
+  Gateway-initiated refunds usually can't be un-done. Deleting a refund record
+  from WooCommerce only removes the local record.
+</Callout>

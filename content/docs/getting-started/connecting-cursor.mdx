@@ -1,0 +1,77 @@
+---
+title: Connecting Cursor / VS Code
+description: Use StoreMCP inside Cursor or VS Code with the MCP extension.
+tier: free
+order: 5
+---
+
+Cursor and VS Code both support MCP servers. The configuration is nearly identical.
+
+## Cursor
+
+Cursor reads MCP config from `~/.cursor/mcp.json` (global) or `.cursor/mcp.json` (per-project).
+
+```json
+{
+  "mcpServers": {
+    "storemcp": {
+      "url": "https://your-site.com/wp-json/storemcp/v1/mcp",
+      "headers": {
+        "Authorization": "Bearer sk_live_your_api_key"
+      }
+    }
+  }
+}
+```
+
+Restart Cursor. Open the Composer or Chat and the tools will be available.
+
+## VS Code
+
+1. Install the **MCP** extension (or use Copilot Chat's MCP support)
+2. Add to `.vscode/mcp.json` in your workspace:
+
+```json
+{
+  "servers": {
+    "storemcp": {
+      "type": "http",
+      "url": "https://your-site.com/wp-json/storemcp/v1/mcp",
+      "headers": {
+        "Authorization": "Bearer sk_live_your_api_key"
+      }
+    }
+  }
+}
+```
+
+## Windsurf
+
+Windsurf MCP config lives at `~/.codeium/windsurf/mcp_config.json`:
+
+```json
+{
+  "mcpServers": {
+    "storemcp": {
+      "serverUrl": "https://your-site.com/wp-json/storemcp/v1/mcp",
+      "headers": {
+        "Authorization": "Bearer sk_live_your_api_key"
+      }
+    }
+  }
+}
+```
+
+## Use cases inside an editor
+
+Inside a code editor, StoreMCP shines for tasks like:
+
+- Syncing product data between a Next.js app and WooCommerce
+- Generating test fixtures from real products
+- Debugging why an order is stuck in "processing"
+- Reading the site's Yoast SEO meta alongside the code that generates it
+
+<Callout type="tip">
+  Keep a separate API key per machine/IDE. This makes it trivial to revoke
+  access when you sell/retire a device.
+</Callout>
