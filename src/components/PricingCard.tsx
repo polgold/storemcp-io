@@ -61,17 +61,33 @@ export function PricingCard({
         <span className="text-sm text-fg-subtle">{tag}</span>
       </div>
 
-      <Link
-        href={ctaHref}
-        className={cn(
-          'mt-6 inline-flex h-10 items-center justify-center rounded-md text-sm font-medium transition',
-          popular
-            ? 'bg-accent text-black hover:bg-accent-hover shadow-glow'
-            : 'border border-border text-fg hover:border-border-strong hover:bg-bg-elevated'
-        )}
-      >
-        {cta}
-      </Link>
+      {ctaHref.startsWith('http') ? (
+        <a
+          href={ctaHref}
+          target="_blank"
+          rel="noopener noreferrer"
+          className={cn(
+            'mt-6 inline-flex h-10 items-center justify-center rounded-md text-sm font-medium transition',
+            popular
+              ? 'bg-accent text-black hover:bg-accent-hover shadow-glow'
+              : 'border border-border text-fg hover:border-border-strong hover:bg-bg-elevated'
+          )}
+        >
+          {cta}
+        </a>
+      ) : (
+        <Link
+          href={ctaHref}
+          className={cn(
+            'mt-6 inline-flex h-10 items-center justify-center rounded-md text-sm font-medium transition',
+            popular
+              ? 'bg-accent text-black hover:bg-accent-hover shadow-glow'
+              : 'border border-border text-fg hover:border-border-strong hover:bg-bg-elevated'
+          )}
+        >
+          {cta}
+        </Link>
+      )}
 
       <ul className="mt-6 space-y-2.5 border-t border-border pt-5 text-sm">
         {features.map((f) => (

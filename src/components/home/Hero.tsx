@@ -54,9 +54,8 @@ export function Hero() {
           className="mt-10 flex flex-col items-center justify-center gap-3 sm:flex-row"
         >
           <LinkButton
-            href="https://wordpress.org/plugins/"
-            target="_blank"
-            rel="noreferrer"
+            href="/downloads/store-mcp-latest.zip"
+            download
             size="lg"
           >
             <Download size={16} />

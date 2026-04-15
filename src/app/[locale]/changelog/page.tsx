@@ -17,6 +17,27 @@ type Release = {
 
 const RELEASES: Release[] = [
   {
+    version: '1.1.1',
+    date: '2026-04-15',
+    badge: 'Latest',
+    sections: [
+      {
+        title: 'Added',
+        items: [
+          'Full Spanish (es_ES) translation bundled with the plugin — admin UI, tool descriptions and example prompts.',
+          'Plain-language explainer on the Tools admin page: every module now shows what it does plus two example prompts you can send to Claude, ChatGPT or any MCP client.',
+          'Per-tool explainer in the Registered tools catalogue — each store_mcp_* tool now has a one-line description of what it does and why you would call it.'
+        ]
+      },
+      {
+        title: 'Changed',
+        items: [
+          'Official website moved from storemcp.com to storemcp.io — plugin URI, author URI, license API, OAuth docs, pricing links and admin copy all updated.'
+        ]
+      }
+    ]
+  },
+  {
     version: '1.0.0',
     date: '2026-04-14',
     badge: 'Initial release',

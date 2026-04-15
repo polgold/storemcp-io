@@ -4,6 +4,7 @@ import { ShieldCheck } from 'lucide-react';
 import { PricingCard } from '@/components/PricingCard';
 import { Section, SectionHeading } from '@/components/Section';
 import { FAQ } from '@/components/FAQ';
+import { LEMONSQUEEZY_CHECKOUT } from '@/lib/lemonsqueezy';
 
 export const metadata: Metadata = {
   title: 'Pricing',
@@ -174,7 +175,7 @@ export default async function PricingPage({
             desc={t('pro.desc')}
             features={isES ? PRO_FEATURES_ES : PRO_FEATURES_EN}
             cta={t('pro.cta')}
-            ctaHref="/account"
+            ctaHref={LEMONSQUEEZY_CHECKOUT.pro}
             popular
             popularLabel={t('mostPopular')}
           />
@@ -186,7 +187,7 @@ export default async function PricingPage({
             desc={t('agency.desc')}
             features={isES ? AGENCY_FEATURES_ES : AGENCY_FEATURES_EN}
             cta={t('agency.cta')}
-            ctaHref="/account"
+            ctaHref={LEMONSQUEEZY_CHECKOUT.agency}
           />
         </div>
 

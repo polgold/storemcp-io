@@ -56,9 +56,8 @@ export function Header() {
             {t('account')}
           </Link>
           <LinkButton
-            href="https://wordpress.org/plugins/"
-            target="_blank"
-            rel="noreferrer"
+            href="/downloads/store-mcp-latest.zip"
+            download
             size="sm"
           >
             {t('download')}
@@ -111,9 +110,8 @@ export function Header() {
             </a>
           </div>
           <LinkButton
-            href="https://wordpress.org/plugins/"
-            target="_blank"
-            rel="noreferrer"
+            href="/downloads/store-mcp-latest.zip"
+            download
             size="md"
             className="mt-2"
           >
