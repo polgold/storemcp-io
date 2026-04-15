@@ -28,20 +28,24 @@ export const PLUGIN_SLUG = 'store-mcp';
 
 export const releases: PluginRelease[] = [
   {
-    version: '1.1.1',
+    version: '1.1.2',
     releasedAt: '2026-04-15',
     tested: '6.7',
     requires: '6.4',
     requiresPhp: '8.0',
-    downloadUrl: 'https://storemcp.io/downloads/store-mcp-1.1.1.zip',
+    downloadUrl: 'https://storemcp.io/downloads/store-mcp-1.1.2.zip',
     detailsUrl: 'https://storemcp.io/changelog',
     changelog: [
+      '<h4>1.1.2 — 2026-04-15</h4>',
+      '<ul>',
+      '<li>License activation rewritten to use Lemon Squeezy: per-site instance tracking, correct seat counting and proper deactivation.</li>',
+      '<li>Self-hosted auto-updater is now live: new releases arrive via Plugins → Updates on sites installed from storemcp.io.</li>',
+      '</ul>',
       '<h4>1.1.1 — 2026-04-15</h4>',
       '<ul>',
       '<li>Added full Spanish (es_ES) translation.</li>',
       '<li>Added plain-language explainer and example prompts for every module and tool.</li>',
       '<li>Moved official website from storemcp.com to storemcp.io.</li>',
-      '<li>Added self-hosted auto-updater: updates delivered directly from storemcp.io.</li>',
       '</ul>',
       '<h4>1.0.0 — 2026-04-14</h4>',
       '<ul>',
