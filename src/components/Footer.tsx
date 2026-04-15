@@ -33,14 +33,9 @@ export function Footer() {
     {
       title: t('company'),
       links: [
-        {
-          href: 'https://instagram.com/exitmediacontent',
-          label: t('about'),
-          external: true
-        },
         { href: 'mailto:hello@storemcp.io', label: t('contact'), external: true },
         {
-          href: 'https://instagram.com/exitmediacontent',
+          href: 'https://instagram.com/storemcp.io',
           label: t('twitter'),
           external: true
         }
@@ -75,7 +70,7 @@ export function Footer() {
                 <Github size={15} />
               </a>
               <a
-                href="https://instagram.com/exitmediacontent"
+                href="https://instagram.com/storemcp.io"
                 target="_blank"
                 rel="noreferrer"
                 className="flex h-9 w-9 items-center justify-center rounded-md border border-border text-fg-muted transition hover:border-border-strong hover:text-fg"
