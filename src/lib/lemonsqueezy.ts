@@ -110,13 +110,17 @@ export function normalize(
   fallbackMessage = ''
 ): NormalizedLicense {
   const variant = (ls.meta?.variant_name ?? '').toLowerCase();
+  const product = (ls.meta?.product_name ?? '').toLowerCase();
   const status = ls.license_key?.status;
-  const active = Boolean(ls.valid) && status === 'active';
+  // LS /activate returns `activated`, /validate returns `valid`. Accept either,
+  // and trust `status === 'active'` as the source of truth.
+  const flagged = Boolean(ls.valid) || Boolean((ls as { activated?: boolean }).activated);
+  const active = status === 'active' && (flagged || !ls.error);
 
   let tier: NormalizedLicense['tier'] = 'free';
   if (active) {
-    if (variant.includes('agency')) tier = 'agency';
-    else if (variant.includes('pro')) tier = 'pro';
+    if (variant.includes('agency') || product.includes('agency')) tier = 'agency';
+    else if (variant.includes('pro') || product.includes('pro')) tier = 'pro';
   }
 
   const limit = ls.license_key?.activation_limit;
