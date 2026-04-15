@@ -5,7 +5,19 @@ export const alt = 'StoreMCP — AI Control Center for WordPress & WooCommerce';
 export const size = { width: 1200, height: 630 };
 export const contentType = 'image/png';
 
-export default async function OG() {
+export default async function OG({
+  params
+}: {
+  params: { locale: string };
+}) {
+  const isES = params.locale === 'es';
+  const headline = isES
+    ? 'Controlá tu sitio WordPress desde IA.'
+    : 'Control your WordPress site from AI.';
+  const sub = isES
+    ? '+120 tools MCP para WordPress y WooCommerce — Claude, ChatGPT, Cursor y cualquier cliente MCP.'
+    : '120+ MCP tools for WordPress & WooCommerce — Claude, ChatGPT, Cursor and any MCP client.';
+
   return new ImageResponse(
     (
       <div
@@ -60,7 +72,7 @@ export default async function OG() {
             maxWidth: 960
           }}
         >
-          Control your WordPress site from AI.
+          {headline}
         </div>
         <div
           style={{
@@ -71,7 +83,7 @@ export default async function OG() {
             maxWidth: 900
           }}
         >
-          120+ MCP tools for WordPress & WooCommerce — Claude, ChatGPT, Cursor and any MCP client.
+          {sub}
         </div>
         <div
           style={{

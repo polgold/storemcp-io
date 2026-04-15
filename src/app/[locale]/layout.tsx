@@ -1,6 +1,6 @@
 import type { Metadata } from 'next';
 import { NextIntlClientProvider } from 'next-intl';
-import { getMessages, setRequestLocale } from 'next-intl/server';
+import { getMessages, getTranslations, setRequestLocale } from 'next-intl/server';
 import { notFound } from 'next/navigation';
 import { Header } from '@/components/Header';
 import { Footer } from '@/components/Footer';
@@ -16,24 +16,39 @@ export async function generateMetadata({
   params: { locale: string };
 }): Promise<Metadata> {
   const isES = params.locale === 'es';
+  const t = await getTranslations({
+    locale: params.locale,
+    namespace: 'meta.home'
+  });
+  const title = t('title');
+  const description = t('description');
+  const ogLocale = isES ? 'es_ES' : 'en_US';
+  const altLocale = isES ? 'en_US' : 'es_ES';
+  const path = `/${params.locale}`;
+
   return {
-    title: isES
-      ? {
-          default: 'StoreMCP — Centro de Control AI para WordPress y WooCommerce',
-          template: '%s · StoreMCP'
-        }
-      : {
-          default: 'StoreMCP — AI Control Center for WordPress & WooCommerce',
-          template: '%s · StoreMCP'
-        },
-    description: isES
-      ? 'El servidor MCP más completo para WordPress. Controlá productos, órdenes, páginas, analytics y más de 120 operaciones desde Claude, ChatGPT o cualquier asistente AI.'
-      : 'The most comprehensive MCP server plugin for WordPress. Control products, orders, pages, analytics and 120+ operations from Claude, ChatGPT, or any AI assistant.',
+    title: { default: title, template: '%s · StoreMCP' },
+    description,
     alternates: {
+      canonical: path,
       languages: {
         en: '/en',
         es: '/es'
       }
+    },
+    openGraph: {
+      type: 'website',
+      siteName: 'StoreMCP',
+      url: path,
+      title,
+      description,
+      locale: ogLocale,
+      alternateLocale: [altLocale]
+    },
+    twitter: {
+      card: 'summary_large_image',
+      title,
+      description
     }
   };
 }
