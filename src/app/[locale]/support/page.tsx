@@ -246,7 +246,7 @@ export default function SupportPage({
         ? 'Reportá bugs y solicitá features en el repo público.'
         : 'Report bugs and request features on the public repo.',
       cta: isES ? 'Abrir issue' : 'Open issue',
-      href: 'https://github.com/exitmediacontent/storemcp/issues'
+      href: 'https://github.com/storemcp/store-mcp/issues'
     },
     {
       icon: Mail,

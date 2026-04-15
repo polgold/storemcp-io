@@ -24,7 +24,7 @@ export function Footer() {
         { href: '/support', label: t('support') },
         { href: '/docs/troubleshooting/common-issues', label: t('faq') },
         {
-          href: 'https://github.com/exitmediacontent/storemcp',
+          href: 'https://github.com/storemcp/store-mcp',
           label: 'GitHub',
           external: true
         }
@@ -66,7 +66,7 @@ export function Footer() {
             </p>
             <div className="mt-6 flex items-center gap-2">
               <a
-                href="https://github.com/exitmediacontent/storemcp"
+                href="https://github.com/storemcp/store-mcp"
                 target="_blank"
                 rel="noreferrer"
                 className="flex h-9 w-9 items-center justify-center rounded-md border border-border text-fg-muted transition hover:border-border-strong hover:text-fg"

@@ -20,7 +20,7 @@ export function OpenSource() {
           <p className="mt-4 text-fg-muted">{t('desc')}</p>
           <div className="mt-8 flex flex-wrap items-center justify-center gap-3">
             <a
-              href="https://github.com/exitmediacontent/storemcp"
+              href="https://github.com/storemcp/store-mcp"
               target="_blank"
               rel="noreferrer"
               className="inline-flex h-10 items-center gap-2 rounded-md border border-border bg-bg-elevated px-4 text-sm font-medium text-fg transition hover:border-border-strong"

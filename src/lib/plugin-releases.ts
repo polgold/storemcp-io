@@ -28,14 +28,21 @@ export const PLUGIN_SLUG = 'store-mcp';
 
 export const releases: PluginRelease[] = [
   {
-    version: '1.1.2',
+    version: '1.1.3',
     releasedAt: '2026-04-15',
-    tested: '6.7',
+    tested: '6.8',
     requires: '6.4',
     requiresPhp: '8.0',
-    downloadUrl: 'https://storemcp.io/downloads/store-mcp-1.1.2.zip',
+    downloadUrl: 'https://storemcp.io/downloads/store-mcp-1.1.3.zip',
     detailsUrl: 'https://storemcp.io/changelog',
     changelog: [
+      '<h4>1.1.3 — 2026-04-15</h4>',
+      '<ul>',
+      '<li>WordPress Plugin Check compliance pass: escaped exception messages, switched to <code>wp_parse_url()</code> / <code>wp_delete_file()</code>, prepared all custom-table queries, and removed the deprecated explicit <code>load_plugin_textdomain()</code> call.</li>',
+      '<li>Widget tools now read the <code>sidebars_widgets</code> option directly instead of relying on <code>wp_get_sidebars_widgets()</code>.</li>',
+      '<li>Activity-log CSV export no longer touches the filesystem.</li>',
+      '<li>Bumped <em>Tested up to</em> to WordPress 6.8.</li>',
+      '</ul>',
       '<h4>1.1.2 — 2026-04-15</h4>',
       '<ul>',
       '<li>License activation rewritten to use Lemon Squeezy: per-site instance tracking, correct seat counting and proper deactivation.</li>',

@@ -44,7 +44,7 @@ export function Header() {
         <div className="hidden items-center gap-3 md:flex">
           <LanguageToggle />
           <a
-            href="https://github.com/exitmediacontent/storemcp"
+            href="https://github.com/storemcp/store-mcp"
             target="_blank"
             rel="noreferrer"
             className="flex h-9 w-9 items-center justify-center rounded-md text-fg-muted transition hover:bg-bg-card hover:text-fg"
@@ -100,7 +100,7 @@ export function Header() {
           <div className="mt-2 flex items-center gap-3 px-2">
             <LanguageToggle />
             <a
-              href="https://github.com/exitmediacontent/storemcp"
+              href="https://github.com/storemcp/store-mcp"
               target="_blank"
               rel="noreferrer"
               className="flex h-9 w-9 items-center justify-center rounded-md text-fg-muted transition hover:bg-bg-card hover:text-fg"
