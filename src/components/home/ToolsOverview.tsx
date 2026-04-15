@@ -4,32 +4,32 @@ import { motion } from 'framer-motion';
 import { useTranslations } from 'next-intl';
 import { Section } from '@/components/Section';
 
-const MODULES = [
-  'Products',
-  'Variations',
-  'Categories',
-  'Tags',
-  'Attributes',
-  'Orders',
-  'Customers',
-  'Coupons',
-  'Reports',
-  'Shipping',
-  'Tax',
-  'Settings',
-  'Pages',
-  'Posts',
-  'Media',
-  'Menus',
-  'Users',
-  'Reviews',
-  'SEO',
-  'Plugins',
-  'Themes',
-  'Webhooks',
-  'Refunds',
-  'System'
-];
+const MODULE_KEYS = [
+  'products',
+  'variations',
+  'categories',
+  'tags',
+  'attributes',
+  'orders',
+  'customers',
+  'coupons',
+  'reports',
+  'shipping',
+  'tax',
+  'settings',
+  'pages',
+  'posts',
+  'media',
+  'menus',
+  'users',
+  'reviews',
+  'seo',
+  'plugins',
+  'themes',
+  'webhooks',
+  'refunds',
+  'system'
+] as const;
 
 export function ToolsOverview() {
   const t = useTranslations('woocommerce');
@@ -38,7 +38,7 @@ export function ToolsOverview() {
       <div className="grid items-start gap-12 lg:grid-cols-2">
         <div>
           <div className="text-xs font-medium uppercase tracking-[0.2em] text-accent">
-            WooCommerce + WordPress
+            {t('eyebrow')}
           </div>
           <h2 className="mt-3 text-4xl font-bold tracking-tight text-fg sm:text-5xl">
             {t('title')}
@@ -52,9 +52,9 @@ export function ToolsOverview() {
         </div>
 
         <div className="flex flex-wrap gap-2">
-          {MODULES.map((m, i) => (
+          {MODULE_KEYS.map((key, i) => (
             <motion.span
-              key={m}
+              key={key}
               initial={{ opacity: 0, y: 6 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
@@ -62,7 +62,7 @@ export function ToolsOverview() {
               className="inline-flex items-center gap-2 rounded-md border border-border bg-bg-card/60 px-3 py-1.5 text-sm text-fg-muted transition hover:border-accent/40 hover:text-fg"
             >
               <span className="h-1.5 w-1.5 rounded-full bg-accent/60" />
-              {m}
+              {t(`modules.${key}`)}
             </motion.span>
           ))}
         </div>

@@ -85,7 +85,7 @@ export function Features({ locale }: { locale: string }) {
   return (
     <Section id="features">
       <SectionHeading
-        eyebrow="Features"
+        eyebrow={t('eyebrow')}
         title={t('title')}
         subtitle={t('subtitle')}
       />

@@ -1,15 +1,18 @@
 import type { Metadata } from 'next';
-import { setRequestLocale } from 'next-intl/server';
+import { setRequestLocale, getTranslations } from 'next-intl/server';
 import { Mail, Github, MessageSquare, LifeBuoy } from 'lucide-react';
 import { Link } from '@/i18n/navigation';
 import { Section, SectionHeading } from '@/components/Section';
 import { FAQ } from '@/components/FAQ';
 
-export const metadata: Metadata = {
-  title: 'Support',
-  description:
-    'Get help with StoreMCP — FAQ, community forum, GitHub issues, and email support.'
-};
+export async function generateMetadata({
+  params: { locale }
+}: {
+  params: { locale: string };
+}): Promise<Metadata> {
+  const t = await getTranslations({ locale, namespace: 'meta.support' });
+  return { title: t('title'), description: t('description') };
+}
 
 export default function SupportPage({
   params: { locale }
@@ -272,7 +275,7 @@ export default function SupportPage({
     <>
       <Section>
         <SectionHeading
-          eyebrow="Support"
+          eyebrow={isES ? 'Soporte' : 'Support'}
           title={isES ? 'Cómo te ayudamos' : 'How we help'}
           subtitle={
             isES

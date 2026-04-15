@@ -10,18 +10,58 @@
     "download": "Descargar Free",
     "getPro": "Obtener Pro"
   },
+  "meta": {
+    "home": {
+      "title": "StoreMCP — Centro de Control IA para WordPress y WooCommerce",
+      "description": "El plugin servidor MCP más completo para WordPress. Controlá productos, órdenes, páginas, analytics y más de 120 operaciones desde Claude, ChatGPT o cualquier asistente IA."
+    },
+    "pricing": {
+      "title": "Precios",
+      "description": "Gratis para siempre en sitios personales. Pro para tiendas. Agency para flotas. Garantía de devolución de 14 días."
+    },
+    "docs": {
+      "title": "Documentación",
+      "description": "Documentación completa de StoreMCP — instalación, configuración, referencia de tools, guías y seguridad."
+    },
+    "blog": {
+      "title": "Blog",
+      "description": "Anuncios, guías y reflexiones sobre IA + WordPress + comercio."
+    },
+    "changelog": {
+      "title": "Changelog",
+      "description": "Notas de versiones de StoreMCP — nuevas features, mejoras y fixes."
+    },
+    "support": {
+      "title": "Soporte",
+      "description": "Obtené ayuda con StoreMCP — FAQ, foro de la comunidad, issues de GitHub y soporte por email."
+    },
+    "account": {
+      "title": "Cuenta",
+      "description": "Gestioná tu licencia StoreMCP y sitios."
+    },
+    "terms": {
+      "title": "Términos",
+      "description": "Términos de servicio de StoreMCP."
+    },
+    "privacy": {
+      "title": "Privacidad",
+      "description": "Política de privacidad de storemcp.io y el plugin StoreMCP."
+    }
+  },
   "hero": {
     "badge": "Ahora en Beta pública",
     "title": "Controlá todo tu sitio WordPress desde IA",
-    "subtitle": "StoreMCP conecta WordPress y WooCommerce con Claude, ChatGPT, Cursor y cualquier cliente AI compatible con MCP. Productos, órdenes, páginas, analytics — todo en lenguaje natural.",
+    "subtitle": "StoreMCP conecta WordPress y WooCommerce con Claude, ChatGPT, Cursor y cualquier cliente de IA compatible con MCP. Productos, órdenes, páginas, analytics — todo en lenguaje natural.",
     "ctaPrimary": "Descargar Free",
     "ctaSecondary": "Ver documentación"
   },
   "features": {
+    "eyebrow": "Características",
     "title": "Qué podés hacer",
     "subtitle": "Cada operación que necesitás, expuesta como una sola llamada."
   },
   "howItWorks": {
+    "eyebrow": "Flujo",
     "title": "Cómo funciona",
     "subtitle": "De la instalación al control por IA en menos de cinco minutos.",
     "step1Title": "Instalá",
@@ -32,22 +72,58 @@
     "step3Desc": "Preguntá lo que quieras. Tu asistente de IA tiene acceso total al sitio."
   },
   "woocommerce": {
+    "eyebrow": "WooCommerce + WordPress",
     "title": "Hecho para WooCommerce",
     "tools": "+120 tools",
-    "desc": "El servidor MCP más completo para WordPress y WooCommerce. Desde gestión de productos hasta analítica avanzada de ventas — StoreMCP cubre cada operación."
+    "desc": "El servidor MCP más completo para WordPress y WooCommerce. Desde gestión de productos hasta analítica avanzada de ventas — StoreMCP cubre cada operación.",
+    "modules": {
+      "products": "Productos",
+      "variations": "Variaciones",
+      "categories": "Categorías",
+      "tags": "Tags",
+      "attributes": "Atributos",
+      "orders": "Órdenes",
+      "customers": "Clientes",
+      "coupons": "Cupones",
+      "reports": "Reportes",
+      "shipping": "Envíos",
+      "tax": "Impuestos",
+      "settings": "Configuración",
+      "pages": "Páginas",
+      "posts": "Posts",
+      "media": "Media",
+      "menus": "Menús",
+      "users": "Usuarios",
+      "reviews": "Reseñas",
+      "seo": "SEO",
+      "plugins": "Plugins",
+      "themes": "Temas",
+      "webhooks": "Webhooks",
+      "refunds": "Reembolsos",
+      "system": "Sistema"
+    }
   },
   "compatible": {
+    "eyebrow": "Integraciones",
     "title": "Compatible con",
     "subtitle": "Funciona con todos los clientes de IA compatibles con MCP.",
-    "any": "Cualquier cliente MCP compatible"
+    "any": "Cualquier cliente MCP compatible",
+    "more": "+ más"
   },
   "opensource": {
+    "eyebrow": "Open core",
     "title": "Núcleo open source",
     "desc": "La versión free de StoreMCP es open source y está publicada en wordpress.org. Creemos en la transparencia y la comunidad.",
     "github": "Ver en GitHub",
     "wporg": "Publicación en wordpress.org"
   },
+  "trustedBy": {
+    "eyebrow": "Comunidad",
+    "title": "Sitios usando StoreMCP",
+    "subtitle": "Sumate a las tiendas que ya gestionan todo con IA."
+  },
   "pricing": {
+    "eyebrow": "Precios",
     "title": "Precios simples",
     "subtitle": "Free para siempre en sitios personales. Pro para tiendas. Agency para flotas.",
     "perSite": "por sitio",
@@ -78,7 +154,45 @@
     },
     "everythingIn": "Todo lo de",
     "plus": "más:",
-    "faqTitle": "Preguntas sobre precios"
+    "faqTitle": "Preguntas sobre precios",
+    "compare": {
+      "wpContent": "Gestión de contenido WordPress",
+      "productsRead": "Navegación de productos (lectura)",
+      "wooCrud": "CRUD completo de WooCommerce",
+      "orders": "Gestión de órdenes + reembolsos",
+      "analytics": "Analítica avanzada de ventas",
+      "rateLimit": "Límite de requests",
+      "sites": "Sitios",
+      "whiteLabel": "White-label",
+      "support": "Soporte prioritario",
+      "rateFree": "30 req/min",
+      "ratePro": "120 req/min",
+      "sitesFree": "1",
+      "sitesPro": "Hasta 5",
+      "sitesAgency": "Ilimitados"
+    }
+  },
+  "docsPage": {
+    "eyebrow": "Documentación",
+    "title": "Docs de StoreMCP",
+    "subtitle": "Todo lo que necesitás para instalar, configurar y usar StoreMCP. Leelo de arriba abajo o saltá directo a la referencia de tools.",
+    "pages": "páginas",
+    "more": "+ más"
+  },
+  "blogPage": {
+    "eyebrow": "Blog",
+    "title": "Notas y anuncios",
+    "subtitle": "Lo que estamos construyendo, cómo usarlo y hacia dónde va el comercio con IA.",
+    "by": "por"
+  },
+  "changelogPage": {
+    "eyebrow": "Changelog",
+    "title": "Novedades de StoreMCP",
+    "subtitle": "Notas de versiones, de la más nueva a la más vieja.",
+    "latest": "Última",
+    "initialRelease": "Release inicial",
+    "added": "Agregado",
+    "changed": "Cambiado"
   },
   "footer": {
     "product": "Producto",
@@ -118,7 +232,14 @@
     "copy": "Copiar",
     "copied": "Copiado",
     "searchDocs": "Buscar en docs…",
+    "searchDocsPlaceholder": "Buscar documentación…",
+    "noResults": "Sin resultados.",
     "onThisPage": "En esta página",
     "edit": "Editar en GitHub"
+  },
+  "banner": {
+    "eyebrow": "Plugin de WordPress",
+    "title": "Disponible en wordpress.org",
+    "subtitle": "Instalá directamente desde el directorio de plugins de WordPress o descargá el ZIP."
   }
 }

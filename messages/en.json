@@ -10,6 +10,44 @@
     "download": "Download Free",
     "getPro": "Get Pro"
   },
+  "meta": {
+    "home": {
+      "title": "StoreMCP — AI Control Center for WordPress & WooCommerce",
+      "description": "The most comprehensive MCP server plugin for WordPress. Control products, orders, pages, analytics and 120+ operations from Claude, ChatGPT, or any AI assistant."
+    },
+    "pricing": {
+      "title": "Pricing",
+      "description": "Free forever for personal sites. Pro for stores. Agency for fleets. 14-day money-back guarantee."
+    },
+    "docs": {
+      "title": "Documentation",
+      "description": "Complete documentation for StoreMCP — installation, configuration, tool reference, guides, and security."
+    },
+    "blog": {
+      "title": "Blog",
+      "description": "Announcements, guides, and thinking on AI + WordPress + commerce."
+    },
+    "changelog": {
+      "title": "Changelog",
+      "description": "Release notes for StoreMCP — new features, improvements, and fixes."
+    },
+    "support": {
+      "title": "Support",
+      "description": "Get help with StoreMCP — FAQ, community forum, GitHub issues, and email support."
+    },
+    "account": {
+      "title": "Account",
+      "description": "Manage your StoreMCP license and sites."
+    },
+    "terms": {
+      "title": "Terms",
+      "description": "Terms of service for StoreMCP."
+    },
+    "privacy": {
+      "title": "Privacy",
+      "description": "Privacy policy for storemcp.io and the StoreMCP plugin."
+    }
+  },
   "hero": {
     "badge": "Now in Public Beta",
     "title": "Control your entire WordPress site from AI",
@@ -18,10 +56,12 @@
     "ctaSecondary": "View Documentation"
   },
   "features": {
+    "eyebrow": "Features",
     "title": "What you can do",
     "subtitle": "Every operation you need, exposed as a single tool call."
   },
   "howItWorks": {
+    "eyebrow": "Workflow",
     "title": "How it works",
     "subtitle": "From install to AI control in under five minutes.",
     "step1Title": "Install",
@@ -32,22 +72,58 @@
     "step3Desc": "Ask anything. Your AI assistant now has full access to your WordPress site."
   },
   "woocommerce": {
+    "eyebrow": "WooCommerce + WordPress",
     "title": "Built for WooCommerce",
     "tools": "120+ tools",
-    "desc": "The most comprehensive MCP server for WordPress & WooCommerce. From product management to advanced sales analytics, StoreMCP covers every operation you need."
+    "desc": "The most comprehensive MCP server for WordPress & WooCommerce. From product management to advanced sales analytics, StoreMCP covers every operation you need.",
+    "modules": {
+      "products": "Products",
+      "variations": "Variations",
+      "categories": "Categories",
+      "tags": "Tags",
+      "attributes": "Attributes",
+      "orders": "Orders",
+      "customers": "Customers",
+      "coupons": "Coupons",
+      "reports": "Reports",
+      "shipping": "Shipping",
+      "tax": "Tax",
+      "settings": "Settings",
+      "pages": "Pages",
+      "posts": "Posts",
+      "media": "Media",
+      "menus": "Menus",
+      "users": "Users",
+      "reviews": "Reviews",
+      "seo": "SEO",
+      "plugins": "Plugins",
+      "themes": "Themes",
+      "webhooks": "Webhooks",
+      "refunds": "Refunds",
+      "system": "System"
+    }
   },
   "compatible": {
+    "eyebrow": "Integrations",
     "title": "Compatible with",
     "subtitle": "Works with every MCP-capable AI client in use today.",
-    "any": "Any MCP-compatible client"
+    "any": "Any MCP-compatible client",
+    "more": "+ more"
   },
   "opensource": {
+    "eyebrow": "Open core",
     "title": "Open source core",
     "desc": "StoreMCP's free tier is open source and available on wordpress.org. We believe in transparency and community.",
     "github": "View on GitHub",
     "wporg": "wordpress.org listing"
   },
+  "trustedBy": {
+    "eyebrow": "Community",
+    "title": "Sites running StoreMCP",
+    "subtitle": "Join the stores already managing everything through AI."
+  },
   "pricing": {
+    "eyebrow": "Pricing",
     "title": "Simple pricing",
     "subtitle": "Free forever for personal sites. Pro for stores. Agency for fleets.",
     "perSite": "per site",
@@ -78,7 +154,45 @@
     },
     "everythingIn": "Everything in",
     "plus": "plus:",
-    "faqTitle": "Pricing questions"
+    "faqTitle": "Pricing questions",
+    "compare": {
+      "wpContent": "WordPress content management",
+      "productsRead": "Product browsing (read)",
+      "wooCrud": "Full WooCommerce CRUD",
+      "orders": "Order management + refunds",
+      "analytics": "Advanced sales analytics",
+      "rateLimit": "Rate limit",
+      "sites": "Sites",
+      "whiteLabel": "White-label",
+      "support": "Priority support",
+      "rateFree": "30 req/min",
+      "ratePro": "120 req/min",
+      "sitesFree": "1",
+      "sitesPro": "Up to 5",
+      "sitesAgency": "Unlimited"
+    }
+  },
+  "docsPage": {
+    "eyebrow": "Documentation",
+    "title": "StoreMCP docs",
+    "subtitle": "Everything you need to install, configure, and use StoreMCP. Read top-to-bottom, or jump straight to the tool reference.",
+    "pages": "pages",
+    "more": "+ more"
+  },
+  "blogPage": {
+    "eyebrow": "Blog",
+    "title": "Writing & announcements",
+    "subtitle": "What we're building, how to use it, and where AI commerce is going.",
+    "by": "by"
+  },
+  "changelogPage": {
+    "eyebrow": "Changelog",
+    "title": "What's new in StoreMCP",
+    "subtitle": "Release notes, sorted newest first.",
+    "latest": "Latest",
+    "initialRelease": "Initial release",
+    "added": "Added",
+    "changed": "Changed"
   },
   "footer": {
     "product": "Product",
@@ -118,7 +232,14 @@
     "copy": "Copy",
     "copied": "Copied",
     "searchDocs": "Search docs…",
+    "searchDocsPlaceholder": "Search documentation…",
+    "noResults": "No results.",
     "onThisPage": "On this page",
     "edit": "Edit on GitHub"
+  },
+  "banner": {
+    "eyebrow": "WordPress plugin",
+    "title": "Available on wordpress.org",
+    "subtitle": "Install directly from the WordPress plugin directory or download the ZIP."
   }
 }

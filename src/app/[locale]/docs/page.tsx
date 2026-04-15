@@ -1,14 +1,17 @@
 import type { Metadata } from 'next';
-import { setRequestLocale } from 'next-intl/server';
+import { setRequestLocale, getTranslations } from 'next-intl/server';
 import { Link } from '@/i18n/navigation';
 import { docsNav } from '@/lib/docs-nav';
 import { ArrowRight, Zap, Book, Terminal, Shield, Wrench, Plug } from 'lucide-react';
 
-export const metadata: Metadata = {
-  title: 'Documentation',
-  description:
-    'Complete documentation for StoreMCP — installation, configuration, tool reference, guides, and security.'
-};
+export async function generateMetadata({
+  params: { locale }
+}: {
+  params: { locale: string };
+}): Promise<Metadata> {
+  const t = await getTranslations({ locale, namespace: 'meta.docs' });
+  return { title: t('title'), description: t('description') };
+}
 
 const ICONS: Record<string, any> = {
   'getting-started': Zap,
@@ -20,24 +23,24 @@ const ICONS: Record<string, any> = {
   troubleshooting: Wrench
 };
 
-export default function DocsIndex({
+export default async function DocsIndex({
   params: { locale }
 }: {
   params: { locale: string };
 }) {
   setRequestLocale(locale);
+  const t = await getTranslations('docsPage');
   return (
     <div>
       <div className="mb-10">
         <div className="text-xs font-medium uppercase tracking-[0.2em] text-accent">
-          Documentation
+          {t('eyebrow')}
         </div>
         <h1 className="mt-2 text-4xl font-bold tracking-tight text-fg">
-          StoreMCP docs
+          {t('title')}
         </h1>
         <p className="mt-3 max-w-2xl text-fg-muted">
-          Everything you need to install, configure, and use StoreMCP. Read
-          top-to-bottom, or jump straight to the tool reference.
+          {t('subtitle')}
         </p>
       </div>
 
@@ -65,13 +68,13 @@ export default function DocsIndex({
                     />
                   </div>
                   <p className="mt-1 text-sm text-fg-muted">
-                    {section.links.length} pages
+                    {section.links.length} {t('pages')}
                   </p>
                   <ul className="mt-3 flex flex-wrap gap-x-3 gap-y-1 text-xs text-fg-subtle">
                     {section.links.slice(0, 6).map((l) => (
                       <li key={l.slug}>{l.title}</li>
                     ))}
-                    {section.links.length > 6 && <li>+ more</li>}
+                    {section.links.length > 6 && <li>{t('more')}</li>}
                   </ul>
                 </div>
               </div>

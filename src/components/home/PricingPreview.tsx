@@ -6,26 +6,28 @@ import { Section, SectionHeading } from '@/components/Section';
 import { Link } from '@/i18n/navigation';
 import { cn } from '@/lib/cn';
 
-const ROWS: {
-  label: string;
+type Row = {
+  labelKey: string;
   free: boolean | string;
   pro: boolean | string;
   agency: boolean | string;
-}[] = [
-  { label: 'WordPress content management', free: true, pro: true, agency: true },
-  { label: 'Product browsing (read)', free: true, pro: true, agency: true },
-  { label: 'Full WooCommerce CRUD', free: false, pro: true, agency: true },
-  { label: 'Order management + refunds', free: false, pro: true, agency: true },
-  { label: 'Advanced sales analytics', free: false, pro: true, agency: true },
-  { label: 'Rate limit', free: '30 req/min', pro: '120 req/min', agency: '120 req/min' },
-  { label: 'Sites', free: '1', pro: 'Up to 5', agency: 'Unlimited' },
-  { label: 'White-label', free: false, pro: false, agency: true },
-  { label: 'Priority support', free: false, pro: true, agency: true }
+};
+
+const ROWS: Row[] = [
+  { labelKey: 'wpContent', free: true, pro: true, agency: true },
+  { labelKey: 'productsRead', free: true, pro: true, agency: true },
+  { labelKey: 'wooCrud', free: false, pro: true, agency: true },
+  { labelKey: 'orders', free: false, pro: true, agency: true },
+  { labelKey: 'analytics', free: false, pro: true, agency: true },
+  { labelKey: 'rateLimit', free: 'rateFree', pro: 'ratePro', agency: 'ratePro' },
+  { labelKey: 'sites', free: 'sitesFree', pro: 'sitesPro', agency: 'sitesAgency' },
+  { labelKey: 'whiteLabel', free: false, pro: false, agency: true },
+  { labelKey: 'support', free: false, pro: true, agency: true }
 ];
 
-function Cell({ v }: { v: boolean | string }) {
+function Cell({ v, t }: { v: boolean | string; t: (k: string) => string }) {
   if (typeof v === 'string')
-    return <span className="text-sm text-fg-muted">{v}</span>;
+    return <span className="text-sm text-fg-muted">{t(v)}</span>;
   return v ? (
     <Check size={16} className="text-accent" />
   ) : (
@@ -35,10 +37,11 @@ function Cell({ v }: { v: boolean | string }) {
 
 export function PricingPreview() {
   const t = useTranslations('pricing');
+  const tc = useTranslations('pricing.compare');
   return (
     <Section className="border-t border-border/50 bg-bg-subtle/30">
       <SectionHeading
-        eyebrow="Pricing"
+        eyebrow={t('eyebrow')}
         title={t('title')}
         subtitle={t('subtitle')}
       />
@@ -47,23 +50,23 @@ export function PricingPreview() {
           <thead>
             <tr className="border-b border-border text-xs uppercase tracking-wider text-fg-subtle">
               <th className="px-4 py-3 font-medium"> </th>
-              <th className="px-4 py-3 font-medium">Free</th>
-              <th className="px-4 py-3 font-medium text-accent">Pro</th>
-              <th className="px-4 py-3 font-medium">Agency</th>
+              <th className="px-4 py-3 font-medium">{t('free.name')}</th>
+              <th className="px-4 py-3 font-medium text-accent">{t('pro.name')}</th>
+              <th className="px-4 py-3 font-medium">{t('agency.name')}</th>
             </tr>
           </thead>
           <tbody>
-            {ROWS.map((row, i) => (
+            {ROWS.map((row) => (
               <tr
-                key={row.label}
+                key={row.labelKey}
                 className={cn(
                   'border-b border-border/60 last:border-b-0 text-sm'
                 )}
               >
-                <td className="px-4 py-3 text-fg">{row.label}</td>
-                <td className="px-4 py-3"><Cell v={row.free} /></td>
-                <td className="bg-accent/[0.04] px-4 py-3"><Cell v={row.pro} /></td>
-                <td className="px-4 py-3"><Cell v={row.agency} /></td>
+                <td className="px-4 py-3 text-fg">{tc(row.labelKey)}</td>
+                <td className="px-4 py-3"><Cell v={row.free} t={tc} /></td>
+                <td className="bg-accent/[0.04] px-4 py-3"><Cell v={row.pro} t={tc} /></td>
+                <td className="px-4 py-3"><Cell v={row.agency} t={tc} /></td>
               </tr>
             ))}
           </tbody>

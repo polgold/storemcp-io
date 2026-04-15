@@ -6,11 +6,14 @@ import { Section, SectionHeading } from '@/components/Section';
 import { FAQ } from '@/components/FAQ';
 import { LEMONSQUEEZY_CHECKOUT } from '@/lib/lemonsqueezy';
 
-export const metadata: Metadata = {
-  title: 'Pricing',
-  description:
-    'Free forever for personal sites. Pro for stores. Agency for fleets. 14-day money-back guarantee.'
-};
+export async function generateMetadata({
+  params: { locale }
+}: {
+  params: { locale: string };
+}): Promise<Metadata> {
+  const t = await getTranslations({ locale, namespace: 'meta.pricing' });
+  return { title: t('title'), description: t('description') };
+}
 
 const FREE_FEATURES_EN = [
   'WordPress content management (pages, posts, media, menus)',
@@ -151,7 +154,7 @@ export default async function PricingPage({
     <>
       <Section className="pb-10 pt-16">
         <SectionHeading
-          eyebrow="Pricing"
+          eyebrow={t('eyebrow')}
           title={t('title')}
           subtitle={t('subtitle')}
         />

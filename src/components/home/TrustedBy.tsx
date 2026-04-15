@@ -1,24 +1,20 @@
 'use client';
 
+import { useTranslations } from 'next-intl';
 import { Section } from '@/components/Section';
 
-export function TrustedBy({ locale }: { locale: string }) {
-  const title = locale === 'es'
-    ? 'Sitios usando StoreMCP'
-    : 'Sites running StoreMCP';
-  const sub = locale === 'es'
-    ? 'Sumate a las tiendas que ya gestionan todo con IA.'
-    : 'Join the stores already managing everything through AI.';
+export function TrustedBy({ locale: _locale }: { locale: string }) {
+  const t = useTranslations('trustedBy');
 
   return (
     <Section className="text-center">
       <div className="text-xs font-medium uppercase tracking-[0.2em] text-accent">
-        {locale === 'es' ? 'Comunidad' : 'Community'}
+        {t('eyebrow')}
       </div>
       <h2 className="mx-auto mt-3 max-w-xl text-3xl font-bold tracking-tight text-fg sm:text-4xl">
-        {title}
+        {t('title')}
       </h2>
-      <p className="mx-auto mt-3 max-w-lg text-fg-muted">{sub}</p>
+      <p className="mx-auto mt-3 max-w-lg text-fg-muted">{t('subtitle')}</p>
       <div className="mx-auto mt-10 grid max-w-3xl grid-cols-2 gap-4 opacity-80 sm:grid-cols-4">
         {['italmarket', 'artesanía.ar', 'dolceria', 'modaviva'].map((n) => (
           <div

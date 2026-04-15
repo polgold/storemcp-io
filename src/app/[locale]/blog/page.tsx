@@ -1,15 +1,18 @@
 import type { Metadata } from 'next';
-import { setRequestLocale } from 'next-intl/server';
+import { setRequestLocale, getTranslations } from 'next-intl/server';
 import { Link } from '@/i18n/navigation';
 import { getAllBlogPosts } from '@/lib/content';
 import { Section, SectionHeading } from '@/components/Section';
 import { Calendar, Clock } from 'lucide-react';
 
-export const metadata: Metadata = {
-  title: 'Blog',
-  description:
-    'Announcements, guides, and thinking on AI + WordPress + commerce.'
-};
+export async function generateMetadata({
+  params: { locale }
+}: {
+  params: { locale: string };
+}): Promise<Metadata> {
+  const t = await getTranslations({ locale, namespace: 'meta.blog' });
+  return { title: t('title'), description: t('description') };
+}
 
 export default async function BlogIndex({
   params: { locale }
@@ -17,14 +20,16 @@ export default async function BlogIndex({
   params: { locale: string };
 }) {
   setRequestLocale(locale);
+  const t = await getTranslations('blogPage');
   const posts = await getAllBlogPosts();
+  const dateLocale = locale === 'es' ? 'es-AR' : 'en-US';
 
   return (
     <Section>
       <SectionHeading
-        eyebrow="Blog"
-        title="Writing & announcements"
-        subtitle="What we're building, how to use it, and where AI commerce is going."
+        eyebrow={t('eyebrow')}
+        title={t('title')}
+        subtitle={t('subtitle')}
       />
       <div className="mx-auto grid max-w-5xl grid-cols-1 gap-6 md:grid-cols-2">
         {posts.map((post) => (
@@ -48,7 +53,7 @@ export default async function BlogIndex({
                 <span className="flex items-center gap-1">
                   <Calendar size={11} />
                   {new Date(post.frontmatter.date).toLocaleDateString(
-                    'en-US',
+                    dateLocale,
                     { year: 'numeric', month: 'short', day: 'numeric' }
                   )}
                 </span>
@@ -65,7 +70,7 @@ export default async function BlogIndex({
               </p>
               {post.frontmatter.author && (
                 <div className="mt-4 text-xs text-fg-subtle">
-                  by {post.frontmatter.author}
+                  {t('by')} {post.frontmatter.author}
                 </div>
               )}
             </div>

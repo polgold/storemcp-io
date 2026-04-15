@@ -17,7 +17,7 @@ export function Compatible() {
   return (
     <Section className="border-t border-border/50">
       <SectionHeading
-        eyebrow="Integrations"
+        eyebrow={t('eyebrow')}
         title={t('title')}
         subtitle={t('subtitle')}
       />
@@ -42,7 +42,7 @@ export function Compatible() {
           transition={{ duration: 0.3, delay: 0.24 }}
           className="flex flex-col items-center justify-center gap-1 rounded-lg border border-dashed border-border px-4 py-6 text-center"
         >
-          <span className="text-sm font-semibold text-accent">+ more</span>
+          <span className="text-sm font-semibold text-accent">{t('more')}</span>
           <span className="text-xs text-fg-subtle">{t('any')}</span>
         </motion.div>
       </div>

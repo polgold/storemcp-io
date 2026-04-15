@@ -12,7 +12,7 @@ export function OpenSource() {
         <div className="pointer-events-none absolute -right-40 -top-40 h-[400px] w-[400px] rounded-full bg-accent/10 blur-3xl" />
         <div className="relative mx-auto max-w-2xl text-center">
           <div className="text-xs font-medium uppercase tracking-[0.2em] text-accent">
-            Open core
+            {t('eyebrow')}
           </div>
           <h2 className="mt-3 text-3xl font-bold tracking-tight text-fg sm:text-4xl">
             {t('title')}

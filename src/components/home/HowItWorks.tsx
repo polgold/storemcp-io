@@ -14,7 +14,7 @@ export function HowItWorks() {
 
   return (
     <Section id="how-it-works" className="border-y border-border/50 bg-bg-subtle/30">
-      <SectionHeading eyebrow="Workflow" title={t('title')} subtitle={t('subtitle')} />
+      <SectionHeading eyebrow={t('eyebrow')} title={t('title')} subtitle={t('subtitle')} />
       <div className="relative grid grid-cols-1 gap-0 md:grid-cols-3">
         <div className="pointer-events-none absolute left-0 top-16 hidden h-px w-full bg-gradient-to-r from-transparent via-border to-transparent md:block" />
         {steps.map((s, i) => (

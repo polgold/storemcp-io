@@ -1,11 +1,15 @@
 import type { Metadata } from 'next';
-import { setRequestLocale } from 'next-intl/server';
+import { setRequestLocale, getTranslations } from 'next-intl/server';
 import { Section } from '@/components/Section';
 
-export const metadata: Metadata = {
-  title: 'Terms',
-  description: 'Terms of service for StoreMCP.'
-};
+export async function generateMetadata({
+  params: { locale }
+}: {
+  params: { locale: string };
+}): Promise<Metadata> {
+  const t = await getTranslations({ locale, namespace: 'meta.terms' });
+  return { title: t('title'), description: t('description') };
+}
 
 export default function TermsPage({
   params: { locale }
@@ -13,6 +17,93 @@ export default function TermsPage({
   params: { locale: string };
 }) {
   setRequestLocale(locale);
+  const isES = locale === 'es';
+
+  if (isES) {
+    return (
+      <Section className="max-w-3xl">
+        <article className="prose-docs">
+          <h1>Términos de Servicio</h1>
+          <p className="text-fg-muted">Última actualización: 14 de abril de 2026</p>
+
+          <h2>1. Aceptación</h2>
+          <p>
+            Al instalar, activar o usar StoreMCP, aceptás estos términos. Si no
+            estás de acuerdo, no uses el plugin.
+          </p>
+
+          <h2>2. Licencia</h2>
+          <p>
+            La versión free de StoreMCP se distribuye bajo la licencia GPL v2 y
+            está disponible en <code>wordpress.org</code>. Las versiones Pro y
+            Agency requieren una licencia paga, válida por el período
+            contratado, y pueden usarse en la cantidad de sitios especificada
+            al momento de la compra.
+          </p>
+
+          <h2>3. Uso aceptable</h2>
+          <p>No podés usar StoreMCP para:</p>
+          <ul>
+            <li>Atacar, sondear o sobrecargar sitios WordPress de terceros</li>
+            <li>Evadir autenticación en sitios que no te pertenecen</li>
+            <li>Violar cualquier ley aplicable en tu jurisdicción</li>
+            <li>Revender o redistribuir builds Pro/Agency sin licencia Agency</li>
+          </ul>
+
+          <h2>4. Reembolsos</h2>
+          <p>
+            Ofrecemos garantía de devolución por 14 días en compras nuevas de
+            Pro o Agency. Las renovaciones no son reembolsables después de 14
+            días de la fecha de renovación.
+          </p>
+
+          <h2>5. Soporte</h2>
+          <p>
+            Usuarios free reciben soporte a través del foro de wordpress.org e
+            issues en GitHub. Usuarios Pro obtienen soporte prioritario por
+            email. Usuarios Agency obtienen un SLA de 24 horas. No garantizamos
+            tiempos de respuesta en foros públicos.
+          </p>
+
+          <h2>6. Descargo de garantía</h2>
+          <p>
+            StoreMCP se entrega "tal cual", sin garantía de ningún tipo. No
+            garantizamos su idoneidad para un propósito particular. Sos
+            responsable de mantener backups de tu sitio WordPress.
+          </p>
+
+          <h2>7. Limitación de responsabilidad</h2>
+          <p>
+            La responsabilidad de ExitMedia LLC se limita al monto pagado por
+            el período de licencia vigente. No somos responsables por daños
+            indirectos, consecuentes o incidentales.
+          </p>
+
+          <h2>8. Uso de IA</h2>
+          <p>
+            StoreMCP expone tools a los clientes de IA que configures. Sos
+            responsable de las salidas de esos sistemas de IA, incluyendo
+            cualquier escritura que ejecuten sobre tu sitio WordPress.
+            Recomendamos fuertemente usar API keys con mínimo privilegio y
+            previews dry-run para operaciones destructivas.
+          </p>
+
+          <h2>9. Cambios</h2>
+          <p>
+            Podemos actualizar estos términos. Si los cambios son materiales,
+            avisaremos a los titulares de licencia por email con al menos 30
+            días de anticipación.
+          </p>
+
+          <h2>10. Contacto</h2>
+          <p>
+            ExitMedia LLC · <a href="mailto:hello@storemcp.io">hello@storemcp.io</a>
+          </p>
+        </article>
+      </Section>
+    );
+  }
+
   return (
     <Section className="max-w-3xl">
       <article className="prose-docs">

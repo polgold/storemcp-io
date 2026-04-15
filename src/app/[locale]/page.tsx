@@ -7,6 +7,7 @@ import { Compatible } from '@/components/home/Compatible';
 import { PricingPreview } from '@/components/home/PricingPreview';
 import { TrustedBy } from '@/components/home/TrustedBy';
 import { OpenSource } from '@/components/home/OpenSource';
+import { PluginBanner } from '@/components/home/PluginBanner';
 
 export default function HomePage({
   params: { locale }
@@ -17,6 +18,7 @@ export default function HomePage({
   return (
     <>
       <Hero />
+      <PluginBanner />
       <Features locale={locale} />
       <HowItWorks />
       <ToolsOverview />
