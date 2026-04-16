@@ -1,0 +1,79 @@
+---
+title: Primeros comandos
+description: Diez prompts para verificar que StoreMCP funciona y ver qué es posible.
+tier: free
+order: 6
+---
+
+Una vez que conectaste un cliente de IA a StoreMCP, probá estos prompts en orden. Cada uno ejercita un módulo diferente.
+
+## 1. Confirmá la conexión
+
+> ¿Qué tools tenés del servidor storemcp?
+
+Deberías ver una lista. Si no aparece, revisá [errores de conexión](/docs/troubleshooting/connection-errors).
+
+## 2. Leer info del sitio
+
+> ¿Qué versión de WordPress y WooCommerce está corriendo este sitio?
+
+Usa: `store_mcp_get_site_info`
+
+## 3. Listar productos recientes
+
+> Mostrame mis 5 productos agregados más recientemente con sus precios y stock.
+
+Usa: `store_mcp_list_products`
+
+## 4. Leer un producto específico
+
+> Traé los detalles completos del producto con SKU "MIN-750-AGUA".
+
+Usa: `store_mcp_get_product`
+
+## 5. Órdenes recientes (Pro)
+
+> Listá las 10 órdenes más recientes con sus estados.
+
+Usa: `store_mcp_list_orders` *(Pro)*
+
+## 6. Snapshot de ventas (Pro)
+
+> Dame el revenue total de los últimos 7 días versus los 7 días anteriores.
+
+Usa: `store_mcp_report_sales` *(Pro)*
+
+## 7. Más vendidos
+
+> ¿Cuáles son mis 5 productos más vendidos este mes?
+
+Usa: `store_mcp_report_top_sellers`
+
+## 8. Resumen de páginas
+
+> ¿Cuántas páginas tiene este sitio y cuáles son sus títulos?
+
+Usa: `store_mcp_list_pages`
+
+## 9. Crear una página
+
+> Creá una página en borrador titulada "Política de envíos" con una intro breve sobre nuestros tiempos de envío en Argentina.
+
+Usa: `store_mcp_create_page`
+
+<Callout type="warning" title="Empezá con borradores">
+  Cuando probés operaciones de escritura por primera vez, pedile a la IA que cree
+  cosas en estado "borrador" para poder revisar antes de publicar.
+</Callout>
+
+## 10. Alerta de stock bajo (Pro)
+
+> ¿Qué productos tienen stock por debajo de 10 unidades?
+
+Usa: `store_mcp_report_low_stock` *(Pro)*
+
+## ¿Qué sigue?
+
+- Leé la [referencia de tools](/docs/tools-reference/products) para ver las listas completas de parámetros
+- Explorá las [guías](/docs/guides/managing-products) para flujos de trabajo completos
+- Revisá las [buenas prácticas de seguridad](/docs/security/best-practices) antes de compartir claves

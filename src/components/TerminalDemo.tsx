@@ -1,8 +1,9 @@
 'use client';
 
 import { motion } from 'framer-motion';
+import { useLocale } from 'next-intl';
 
-const LINES = [
+const LINES_EN = [
   { type: 'user', text: '"Show me last week\'s top selling products"' },
   { type: 'tool', text: '→ calling store_mcp_report_top_sellers' },
   { type: 'out', text: '1. Agua Mineral 750ml — 234 units' },
@@ -11,7 +12,18 @@ const LINES = [
   { type: 'assistant', text: 'Weekly revenue is up 18% vs last week.' }
 ];
 
+const LINES_ES = [
+  { type: 'user', text: '"Mostrame los productos más vendidos de la semana pasada"' },
+  { type: 'tool', text: '→ llamando store_mcp_report_top_sellers' },
+  { type: 'out', text: '1. Agua Mineral 750ml — 234 unidades' },
+  { type: 'out', text: '2. Tiramisú Dolceria Alba — 189 unidades' },
+  { type: 'out', text: '3. Huevo Pascua Baci — 156 unidades' },
+  { type: 'assistant', text: 'El revenue semanal subió un 18% vs la semana anterior.' }
+];
+
 export function TerminalDemo() {
+  const locale = useLocale();
+  const LINES = locale === 'es' ? LINES_ES : LINES_EN;
   return (
     <motion.div
       initial={{ opacity: 0, y: 24 }}

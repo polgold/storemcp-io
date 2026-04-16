@@ -11,14 +11,26 @@ export default function NotFound() {
           Page not found
         </h1>
         <p className="mt-3 text-fg-muted">
-          The page you're looking for doesn't exist or has moved.
+          The page you&apos;re looking for doesn&apos;t exist or has moved.
+          <br />
+          <span className="text-fg-subtle">
+            La página que buscás no existe o fue movida.
+          </span>
         </p>
-        <Link
-          href="/en"
-          className="mt-8 inline-flex h-10 items-center rounded-md bg-accent px-5 text-sm font-medium text-black hover:bg-accent-hover"
-        >
-          Go home
-        </Link>
+        <div className="mt-8 flex items-center justify-center gap-3">
+          <Link
+            href="/en"
+            className="inline-flex h-10 items-center rounded-md bg-accent px-5 text-sm font-medium text-black hover:bg-accent-hover"
+          >
+            Go home
+          </Link>
+          <Link
+            href="/es"
+            className="inline-flex h-10 items-center rounded-md border border-border bg-bg-card/40 px-5 text-sm font-medium text-fg hover:border-border-strong"
+          >
+            Ir al inicio
+          </Link>
+        </div>
       </div>
     </div>
   );

@@ -8,8 +8,12 @@ import { ArrowLeft, Calendar, Clock } from 'lucide-react';
 
 type Props = { params: { locale: string; slug: string } };
 
-export async function generateStaticParams() {
-  const posts = await getAllBlogPosts();
+export async function generateStaticParams({
+  params
+}: {
+  params: { locale: string };
+}) {
+  const posts = await getAllBlogPosts(params.locale);
   return posts.map((p) => ({ slug: p.slug }));
 }
 

@@ -1,0 +1,43 @@
+---
+title: Conectar ChatGPT
+description: Conectá StoreMCP a ChatGPT mediante Connectors.
+tier: free
+order: 4
+---
+
+ChatGPT soporta servidores MCP a través de **Connectors** (disponible en los planes ChatGPT Business, Enterprise y Team).
+
+## Agregar el conector
+
+1. En ChatGPT, hacé clic en tu avatar → **Configuración → Connectors**
+2. Hacé clic en **Agregar conector**
+3. Elegí **Custom MCP server**
+4. Completá:
+   - **Nombre**: `StoreMCP`
+   - **Server URL**: `https://tu-sitio.com/wp-json/storemcp/v1/mcp`
+   - **Auth**: Bearer token → pegá tu API key
+5. Guardá
+
+El conector queda disponible en chats nuevos. Elegilo desde el menú de conectores debajo del compositor y hacé una pregunta.
+
+## Prompts de ejemplo
+
+```text
+Listá mis 10 órdenes más recientes
+Mostrá el revenue total de esta semana versus la semana pasada
+Escribí una descripción de producto para una nueva pasta orgánica
+```
+
+## Limitaciones
+
+- ChatGPT limita cuántas tools pueden estar activas en una conversación. Si tenés todos los módulos habilitados, conviene desactivar los que no usás en un chat dado desde **StoreMCP → Módulos**.
+- Las cuentas Free de ChatGPT no tienen acceso a Connectors por el momento.
+
+<Callout type="info" title="ChatGPT Plus">
+  Si no tenés ChatGPT Business/Enterprise, podés usar StoreMCP igualmente
+  a través de Claude, Cursor u otro cliente MCP compatible.
+</Callout>
+
+## Solución de problemas
+
+Ver [Errores de conexión](/docs/troubleshooting/connection-errors) para problemas comunes.

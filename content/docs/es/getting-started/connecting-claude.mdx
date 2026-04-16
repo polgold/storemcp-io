@@ -1,0 +1,80 @@
+---
+title: Conectar Claude
+description: Conectá StoreMCP a Claude.ai, Claude Desktop o Claude Code.
+tier: free
+order: 3
+---
+
+StoreMCP expone un servidor MCP remoto sobre HTTP — cualquier superficie de Claude que soporte MCP puede conectarse.
+
+## Claude.ai (web)
+
+1. Andá a **claude.ai → Configuración → Integraciones**
+2. Hacé clic en **Agregar integración personalizada**
+3. Completá:
+   - **Nombre**: `StoreMCP`
+   - **URL**: `https://tu-sitio.com/wp-json/storemcp/v1/mcp`
+   - **Auth**: Bearer token → pegá tu API key
+4. Hacé clic en **Agregar** y habilitá la integración en un chat nuevo
+
+En segundos, Claude va a listar las tools disponibles. Iniciá un chat y probá:
+
+> "¿Cuál es el revenue total de mi tienda este mes?"
+
+## Claude Desktop
+
+Claude Desktop usa un archivo local `claude_desktop_config.json`. Agregá StoreMCP bajo `mcpServers`:
+
+```json
+{
+  "mcpServers": {
+    "storemcp": {
+      "url": "https://tu-sitio.com/wp-json/storemcp/v1/mcp",
+      "headers": {
+        "Authorization": "Bearer sk_live_tu_api_key"
+      }
+    }
+  }
+}
+```
+
+El archivo está en:
+
+- **macOS**: `~/Library/Application Support/Claude/claude_desktop_config.json`
+- **Windows**: `%APPDATA%\Claude\claude_desktop_config.json`
+
+Reiniciá Claude Desktop después de guardar.
+
+## Claude Code (CLI)
+
+Agregá el servidor desde tu terminal:
+
+```bash
+claude mcp add storemcp \
+  --transport http \
+  --url https://tu-sitio.com/wp-json/storemcp/v1/mcp \
+  --header "Authorization: Bearer sk_live_tu_api_key"
+```
+
+Luego iniciá Claude Code en cualquier proyecto y las tools van a estar disponibles.
+
+## Verificar la conexión
+
+Preguntale a Claude:
+
+> "¿Qué tools tenés del servidor storemcp?"
+
+Deberías ver una lista de nombres como `store_mcp_list_products`, `store_mcp_get_site_info`, etc.
+
+<Callout type="tip" title="Usá una clave por integración">
+  Dale a cada integración su propia clave. Revocar Claude.ai más adelante no
+  debería romper tu integración de Cursor.
+</Callout>
+
+## Solución de problemas
+
+- **No conecta** — Asegurate de que la URL sea HTTPS y que tu sitio sea accesible públicamente. Los sitios solo locales no funcionan con Claude.ai.
+- **Autenticación fallida** — Recopiá la clave desde **StoreMCP → API Keys**. Las claves empiezan con `sk_live_`.
+- **Tools faltantes** — Revisá **StoreMCP → Módulos**. Los módulos desactivados no exponen tools.
+
+Ver [Errores de conexión](/docs/troubleshooting/connection-errors) para más detalles.

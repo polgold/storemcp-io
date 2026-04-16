@@ -1,0 +1,69 @@
+---
+title: Configuración
+description: Generá una API key y configurá la autenticación para StoreMCP.
+tier: free
+order: 2
+---
+
+Después de instalar StoreMCP, necesitás hacer dos cosas antes de conectar un cliente de IA:
+
+1. Generar una **API key** (o decidir usar Application Passwords)
+2. Anotar la **URL del servidor MCP**
+
+## Generar una API key
+
+En tu admin de WordPress:
+
+1. Andá a **StoreMCP → API Keys**
+2. Hacé clic en **Crear nueva clave**
+3. Dale un nombre descriptivo (ej: `Claude Desktop`, `Cursor`, `ChatGPT`)
+4. Elegí el **scope** — qué módulos de tools puede acceder esta clave
+5. Hacé clic en **Crear**
+
+<Callout type="warning" title="Copiá la clave ahora">
+  La API key se muestra una sola vez. Si la perdés, vas a tener que revocarla y
+  crear una nueva. Rotá las claves con regularidad.
+</Callout>
+
+## La URL de tu servidor MCP
+
+La URL siempre es:
+
+```text
+https://tu-sitio.com/wp-json/storemcp/v1/mcp
+```
+
+Reemplazá `tu-sitio.com` con tu dominio real. HTTPS es obligatorio.
+
+## Métodos de autenticación
+
+StoreMCP soporta dos métodos de autenticación:
+
+### 1. API keys (recomendado)
+
+Más simple, con scope, revocable. La clave se pasa como bearer token:
+
+```text
+Authorization: Bearer sk_live_...
+```
+
+### 2. Application Passwords (WordPress nativo)
+
+Si preferís las [Application Passwords](https://wordpress.org/documentation/article/application-passwords/) nativas de WordPress, StoreMCP también las acepta. Cualquier usuario con la capability `manage_woocommerce` (o un rol personalizado que definas) puede crear una.
+
+## Elegir qué módulos están activos
+
+No todo sitio necesita todos los módulos. Desactivá los que no usás para reducir la superficie expuesta:
+
+**StoreMCP → Módulos → activar/desactivar módulos**
+
+Por ejemplo, un blog sin tienda puede desactivar Productos, Órdenes, Clientes — dejando solo los módulos de contenido activos.
+
+## Rate limiting
+
+Los planes Free tienen un límite de **30 requests/minuto**. Pro/Agency tienen **120 req/min**. Podés ajustar esto por clave desde **StoreMCP → Configuración → Rate limiting**.
+
+## Próximos pasos
+
+- [Conectar Claude](/docs/getting-started/connecting-claude)
+- [Buenas prácticas de seguridad](/docs/security/best-practices)
