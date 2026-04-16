@@ -28,6 +28,43 @@ export const PLUGIN_SLUG = 'store-mcp';
 
 export const releases: PluginRelease[] = [
   {
+    version: '1.1.4',
+    releasedAt: '2026-04-15',
+    tested: '6.9',
+    requires: '6.4',
+    requiresPhp: '8.0',
+    downloadUrl: 'https://storemcp.io/downloads/store-mcp-1.1.4.zip',
+    detailsUrl: 'https://storemcp.io/changelog',
+    changelog: [
+      '<h4>1.1.4 — 2026-04-15</h4>',
+      '<ul>',
+      '<li>Fixed ChatGPT setup instructions in the dashboard: correct path is <strong>Settings → Apps &amp; Connectors → Advanced settings</strong> (ChatGPT renamed "Connectors" to "Apps" in December 2025).</li>',
+      '</ul>',
+      '<h4>1.1.3 — 2026-04-15</h4>',
+      '<ul>',
+      '<li>WordPress Plugin Check compliance pass: escaped exception messages, switched to <code>wp_parse_url()</code> / <code>wp_delete_file()</code>, prepared all custom-table queries, and removed the deprecated explicit <code>load_plugin_textdomain()</code> call.</li>',
+      '<li>Widget tools now read the <code>sidebars_widgets</code> option directly instead of relying on <code>wp_get_sidebars_widgets()</code>.</li>',
+      '<li>Activity-log CSV export no longer touches the filesystem.</li>',
+      '<li>Bumped <em>Tested up to</em> to WordPress 6.9.</li>',
+      '</ul>',
+      '<h4>1.1.2 — 2026-04-15</h4>',
+      '<ul>',
+      '<li>License activation rewritten to use Lemon Squeezy: per-site instance tracking, correct seat counting and proper deactivation.</li>',
+      '<li>Self-hosted auto-updater is now live: new releases arrive via Plugins → Updates on sites installed from storemcp.io.</li>',
+      '</ul>',
+      '<h4>1.1.1 — 2026-04-15</h4>',
+      '<ul>',
+      '<li>Added full Spanish (es_ES) translation.</li>',
+      '<li>Added plain-language explainers and example prompts for every module and tool.</li>',
+      '<li>Moved official website from storemcp.com to storemcp.io.</li>',
+      '</ul>',
+      '<h4>1.0.0 — 2026-04-14</h4>',
+      '<ul>',
+      '<li>Initial public release. 137 tools across 22 modules.</li>',
+      '</ul>'
+    ].join('\n')
+  },
+  {
     version: '1.1.3',
     releasedAt: '2026-04-15',
     tested: '6.8',
