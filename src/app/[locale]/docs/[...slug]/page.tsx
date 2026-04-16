@@ -1,6 +1,6 @@
 import { notFound } from 'next/navigation';
 import type { Metadata } from 'next';
-import { setRequestLocale } from 'next-intl/server';
+import { setRequestLocale, getTranslations } from 'next-intl/server';
 import { getAllDocSlugs, getDoc } from '@/lib/content';
 import { MdxContent } from '@/components/docs/MdxContent';
 import { DocsPager } from '@/components/docs/DocsPager';
@@ -28,8 +28,9 @@ export async function generateMetadata({
 
 export default async function DocPage({ params }: Props) {
   setRequestLocale(params.locale);
+  const t = await getTranslations('common');
   const slug = params.slug.join('/');
-  const doc = await getDoc(slug);
+  const doc = await getDoc(slug, params.locale);
   if (!doc) notFound();
 
   const meta = findDocMeta(slug);
@@ -38,7 +39,7 @@ export default async function DocPage({ params }: Props) {
   return (
     <article className="prose-docs mx-auto max-w-3xl">
       <div className="mb-6 flex items-center gap-2 text-xs text-fg-subtle">
-        <span>Documentation</span>
+        <span>{t('documentation')}</span>
         <span>/</span>
         <span className="capitalize">{params.slug[0]?.replace(/-/g, ' ')}</span>
       </div>
@@ -56,7 +57,7 @@ export default async function DocPage({ params }: Props) {
         <MdxContent source={doc.content} />
       </div>
 
-      <DocsPager slug={slug} />
+      <DocsPager slug={slug} locale={params.locale} />
     </article>
   );
 }

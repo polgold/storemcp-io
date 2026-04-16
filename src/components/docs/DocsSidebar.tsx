@@ -1,20 +1,22 @@
 'use client';
 
 import { usePathname } from 'next/navigation';
+import { useLocale } from 'next-intl';
 import { Link } from '@/i18n/navigation';
-import { docsNav } from '@/lib/docs-nav';
+import { docsNav, getDocTitle } from '@/lib/docs-nav';
 import { ToolBadge } from '@/components/ToolBadge';
 import { cn } from '@/lib/cn';
 
 export function DocsSidebar() {
   const pathname = usePathname();
+  const locale = useLocale();
 
   return (
     <nav className="flex flex-col gap-6">
       {docsNav.map((section) => (
         <div key={section.slug}>
           <div className="mb-1.5 px-2 text-xs font-semibold uppercase tracking-wider text-fg-subtle">
-            {section.title}
+            {getDocTitle(section, locale)}
           </div>
           <ul className="space-y-0.5">
             {section.links.map((link) => {
@@ -30,7 +32,7 @@ export function DocsSidebar() {
                         : 'text-fg-muted hover:bg-bg-card hover:text-fg'
                     )}
                   >
-                    <span className="truncate">{link.title}</span>
+                    <span className="truncate">{getDocTitle(link, locale)}</span>
                     {link.tier && link.tier !== 'free' && (
                       <ToolBadge tier={link.tier} />
                     )}

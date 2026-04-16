@@ -1,6 +1,6 @@
 import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
-import { setRequestLocale } from 'next-intl/server';
+import { setRequestLocale, getTranslations } from 'next-intl/server';
 import { getBlogPost, getAllBlogPosts } from '@/lib/content';
 import { MdxContent } from '@/components/docs/MdxContent';
 import { Link } from '@/i18n/navigation';
@@ -31,8 +31,11 @@ export async function generateMetadata({
 
 export default async function BlogPostPage({ params }: Props) {
   setRequestLocale(params.locale);
-  const post = await getBlogPost(params.slug);
+  const t = await getTranslations('blogPage');
+  const post = await getBlogPost(params.slug, params.locale);
   if (!post) notFound();
+
+  const dateLocale = params.locale === 'es' ? 'es-AR' : 'en-US';
 
   return (
     <div className="mx-auto max-w-3xl px-4 py-16 sm:px-6 lg:px-8">
@@ -40,7 +43,7 @@ export default async function BlogPostPage({ params }: Props) {
         href="/blog"
         className="inline-flex items-center gap-1 text-sm text-fg-muted transition hover:text-accent"
       >
-        <ArrowLeft size={13} /> Back to blog
+        <ArrowLeft size={13} /> {t('backToBlog')}
       </Link>
 
       <article className="prose-docs mt-8">
@@ -50,7 +53,7 @@ export default async function BlogPostPage({ params }: Props) {
           </span>
           <span className="flex items-center gap-1">
             <Calendar size={11} />
-            {new Date(post.frontmatter.date).toLocaleDateString('en-US', {
+            {new Date(post.frontmatter.date).toLocaleDateString(dateLocale, {
               year: 'numeric',
               month: 'long',
               day: 'numeric'
@@ -67,7 +70,7 @@ export default async function BlogPostPage({ params }: Props) {
 
         {post.frontmatter.author && (
           <div className="mb-8 mt-4 flex items-center gap-2 border-y border-border py-3 text-sm">
-            <span className="text-fg-subtle">Written by</span>
+            <span className="text-fg-subtle">{t('writtenBy')}</span>
             <span className="font-medium text-fg">
               {post.frontmatter.author}
             </span>

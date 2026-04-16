@@ -1,0 +1,99 @@
+---
+title: "10 cosas que podés hacer con StoreMCP y Claude"
+description: "Prompts prácticos que reemplazan horas de clicks en dashboards. Diez flujos de trabajo reales — desde actualización masiva de precios hasta auditorías SEO — listos para copiar y pegar."
+date: "2026-04-12"
+category: "Guías"
+author: "ExitMedia"
+---
+
+Una vez que StoreMCP está conectado a Claude, la parte difícil no es la tecnología — es recordar que *podés* simplemente preguntar. Acá hay diez prompts que usamos cada semana y que reemplazaron horas de trabajo manual.
+
+## 1. Standup diario
+
+```text
+"Dame el standup de hoy: órdenes de ayer, revenue versus el promedio,
+top 3 productos y cualquier cosa inusual."
+```
+
+Claude ejecuta `store_mcp_report_sales`, compara con el promedio móvil de 30 días, trae `store_mcp_report_top_sellers` y señala anomalías. Tres oraciones, cero clicks.
+
+## 2. Actualización masiva de precios por temporada
+
+```text
+"Subí el precio de todos los productos con tag 'verano' un 12%, redondeado al
+peso más cercano. Mostrame los primeros 5 antes de aplicar a todos."
+```
+
+La línea "mostrame los primeros 5 antes de aplicar" es importante — convierte una operación irreversible en una revisable.
+
+## 3. Encontrá los productos que olvidaste
+
+```text
+"Listá productos con cero ventas en los últimos 90 días, ordenados por valor de stock."
+```
+
+Claude cruza `store_mcp_list_products` con `store_mcp_report_top_sellers`. Ideal para encontrar qué descontar o discontinuar.
+
+## 4. Escribí 40 meta descriptions
+
+```text
+"Para cada producto que no tenga meta description, escribí una en español de menos de
+155 caracteres que resalte la categoría del producto y un beneficio clave."
+```
+
+Revisás algunos como spot-check. Si el tono es el correcto, aprobás el resto. Esto solía llevar una tarde entera.
+
+## 5. Auditá el SEO de un producto
+
+```text
+"Auditá el SEO del producto ID 4371. Reportá largo del título, largo de la descripción,
+uso de la keyword principal, alts de imágenes, links internos y lo que falte."
+```
+
+## 6. Procesá un pedido de reembolso
+
+```text
+"La cliente María (orden 18402) quiere devolver un Tiramisú. Reembolsá ese
+ítem de línea (unos $7,50) y mandале un email confirmando que el reembolso está procesado."
+```
+
+Dos llamadas a tools. Un minuto de trabajo.
+
+## 7. Creá una promoción programada
+
+```text
+"Creá el cupón PASCUA26 para 15% de descuento en cualquier carrito mayor a $30, válido del
+18 al 25 de abril. Excluí los productos de la categoría 'Envíos'."
+```
+
+## 8. Encontrá productos duplicados
+
+```text
+"Encontrá productos con SKUs duplicados. Mostrame la lista."
+```
+
+WooCommerce no avisa sobre SKUs duplicados por defecto. Esta es la tarea de "higiene de base de datos" más barata que existe.
+
+## 9. Identificá tus mejores clientes
+
+```text
+"¿Cuáles son mis 10 clientes con mayor LTV? Incluí email, total gastado, cantidad
+de órdenes y fecha de la última compra."
+```
+
+Ideal para un saludo personalizado en fechas especiales o un programa de fidelidad.
+
+## 10. Auditá quién tiene acceso
+
+```text
+"Listá todos los usuarios de WordPress con rol 'administrator' y cuándo iniciaron
+sesión por última vez. Marcá los inactivos por más de 90 días."
+```
+
+La higiene de seguridad suele ser aburrida y se saltea. La IA la convierte en un solo prompt.
+
+## El patrón
+
+Notá qué tienen en común estos prompts: son específicos, incluyen un alcance o umbral, y para cualquier cosa destructiva piden explícitamente una vista previa primero. Ese es el truco.
+
+Probá uno de estos en tu propia tienda hoy. Contanos qué encontrás.

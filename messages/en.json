@@ -183,7 +183,9 @@
     "eyebrow": "Blog",
     "title": "Writing & announcements",
     "subtitle": "What we're building, how to use it, and where AI commerce is going.",
-    "by": "by"
+    "by": "by",
+    "backToBlog": "Back to blog",
+    "writtenBy": "Written by"
   },
   "changelogPage": {
     "eyebrow": "Changelog",
@@ -235,7 +237,13 @@
     "searchDocsPlaceholder": "Search documentation…",
     "noResults": "No results.",
     "onThisPage": "On this page",
-    "edit": "Edit on GitHub"
+    "edit": "Edit on GitHub",
+    "previous": "Previous",
+    "next": "Next",
+    "documentation": "Documentation"
+  },
+  "account": {
+    "kicker": "Account"
   },
   "banner": {
     "eyebrow": "WordPress plugin",

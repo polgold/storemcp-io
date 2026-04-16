@@ -1,0 +1,58 @@
+---
+title: "Por qué tu tienda WooCommerce necesita un servidor MCP en 2026"
+description: "La REST API ya no alcanza. Por qué cada tienda WooCommerce seria va a correr un servidor MCP antes de que termine 2026."
+date: "2026-04-08"
+category: "WooCommerce"
+author: "ExitMedia"
+---
+
+WooCommerce tiene REST API desde 2016. Es sólida, bien documentada y maneja millones de integraciones cada día. ¿Por qué alguien necesitaría otro protocolo encima?
+
+Respuesta corta: porque la REST API fue construida para *software* hablando con WooCommerce. MCP fue construido para *sistemas de razonamiento* hablando con WooCommerce. Y ese es ahora el patrón de integración dominante.
+
+## Qué es MCP en un párrafo
+
+Model Context Protocol es un estándar para que los asistentes de IA descubran y llamen herramientas en servidores remotos. A diferencia de una REST API, un servidor MCP publicita sus tools — nombres, descripciones y esquemas de parámetros — en un formato que los modelos de IA entienden de forma nativa. La IA elige la tool correcta al vuelo, formatea los parámetros, la llama y lee la respuesta. Vos, el humano, nunca escribiste la integración.
+
+## Los supuestos de la REST API que se rompieron
+
+La REST API de WooCommerce fue diseñada en base a supuestos que ya no se cumplen:
+
+**"El caller sabe qué endpoint llamar."**
+La REST API tiene ~40 endpoints solo para WooCommerce. Un desarrollador humano elige el correcto. Una IA no puede adivinar — necesita descripciones de tools lo suficientemente ricas para decidir.
+
+**"El caller construye la forma exacta del request."**
+Los endpoints REST devuelven más datos de los que cualquier caso de uso necesita. Los clientes de IA queman tokens de contexto en los payloads de respuesta. Las tools MCP pueden devolver exactamente la forma que una pregunta dada necesita.
+
+**"La autenticación es un secreto compartido entre dos piezas de código."**
+Con una IA como "cliente", el secreto fluye a través de una conversación. El flujo de bearer token de MCP con claves con scope y rate limits por clave es más seguro que reutilizar una consumer key de REST para todo el sitio.
+
+**"Las operaciones de escritura son raras y las inicia un humano."**
+En el mundo de los dashboards, verdad. En el mundo conversacional, la mayoría de las interacciones son lecturas + muchas escrituras pequeñas. La latencia de la REST API se acumula. El batching y streaming de MCP son mejores alternativas.
+
+## Qué cambia cuando desplegás un servidor MCP
+
+Observamos a varias tiendas migrar en los últimos meses. El patrón:
+
+1. **El tiempo en dashboard baja un 60–80%.** Los operadores dejan de abrir WP-admin para tareas de lectura.
+2. **Se hacen reportes que nunca se hacían antes.** "¿Qué cupones nos hacen perder dinero?" es una investigación de cinco minutos en lugar de medio día de planillas.
+3. **Los equipos de contenido se vuelven autosuficientes.** Ediciones SEO, correcciones de metadata, páginas en borrador — todo desde el chat, sin darles acceso admin.
+4. **Las agencias manejan más sitios por persona.** Una flota de 20 sitios de clientes se vuelve manejable cuando cualquier sitio está a un prompt de distancia.
+5. **La postura de seguridad mejora.** Contraintuitivo: las claves MCP con scope y logs de auditoría por tool son más fáciles de revisar que una docena de plugins con admin completo.
+
+## Qué no cambia
+
+Tu checkout, tus pasarelas de pago, tu frontend. MCP no es un reemplazo del frontend — es un reemplazo del admin. Los clientes siguen interactuando con tu tienda a través del storefront. Vos y tu equipo interactúan a través de la conversación.
+
+## La línea de tiempo
+
+- **Principios de 2025**: MCP se consolida como estándar. Anthropic, OpenAI, los IDEs convergen.
+- **Fines de 2025**: Primeros servidores MCP para herramientas SaaS (Linear, Notion, Slack).
+- **2026**: Las plataformas de e-commerce toman en serio los servidores MCP. Shopify lanza uno. Adobe Commerce lanza uno. WooCommerce obtiene uno vía plugin — ese somos nosotros.
+- **2027**: El admin AI-first se vuelve el estándar. Las REST APIs quedan, pero como la capa máquina-a-máquina bajo MCP.
+
+Si manejás una tienda WooCommerce, la pregunta no es si vas a agregar un servidor MCP. Es si lo vas a hacer mientras todavía es una ventaja competitiva, o después de que sea lo mínimo esperado.
+
+[Instalá StoreMCP free](/docs/getting-started/installation) y probalo en un sitio. Treinta minutos de configuración. Después hacele a tu tienda una pregunta que nunca te molestaste en buscar haciendo clic.
+
+Vas a entender de qué hablamos.

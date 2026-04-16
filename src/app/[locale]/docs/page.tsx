@@ -1,7 +1,7 @@
 import type { Metadata } from 'next';
 import { setRequestLocale, getTranslations } from 'next-intl/server';
 import { Link } from '@/i18n/navigation';
-import { docsNav } from '@/lib/docs-nav';
+import { docsNav, getDocTitle } from '@/lib/docs-nav';
 import { ArrowRight, Zap, Book, Terminal, Shield, Wrench, Plug } from 'lucide-react';
 
 export async function generateMetadata({
@@ -60,7 +60,7 @@ export default async function DocsIndex({
                 <div className="flex-1">
                   <div className="flex items-center gap-2">
                     <h2 className="text-base font-semibold text-fg">
-                      {section.title}
+                      {getDocTitle(section, locale)}
                     </h2>
                     <ArrowRight
                       size={14}
@@ -72,7 +72,7 @@ export default async function DocsIndex({
                   </p>
                   <ul className="mt-3 flex flex-wrap gap-x-3 gap-y-1 text-xs text-fg-subtle">
                     {section.links.slice(0, 6).map((l) => (
-                      <li key={l.slug}>{l.title}</li>
+                      <li key={l.slug}>{getDocTitle(l, locale)}</li>
                     ))}
                     {section.links.length > 6 && <li>{t('more')}</li>}
                   </ul>

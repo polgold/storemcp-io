@@ -21,7 +21,7 @@ export default async function BlogIndex({
 }) {
   setRequestLocale(locale);
   const t = await getTranslations('blogPage');
-  const posts = await getAllBlogPosts();
+  const posts = await getAllBlogPosts(locale);
   const dateLocale = locale === 'es' ? 'es-AR' : 'en-US';
 
   return (

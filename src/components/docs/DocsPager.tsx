@@ -1,8 +1,10 @@
 import { ArrowLeft, ArrowRight } from 'lucide-react';
+import { getTranslations } from 'next-intl/server';
 import { Link } from '@/i18n/navigation';
-import { findAdjacent } from '@/lib/docs-nav';
+import { findAdjacent, getDocTitle } from '@/lib/docs-nav';
 
-export function DocsPager({ slug }: { slug: string }) {
+export async function DocsPager({ slug, locale }: { slug: string; locale: string }) {
+  const t = await getTranslations('common');
   const { prev, next } = findAdjacent(slug);
   if (!prev && !next) return null;
   return (
@@ -13,10 +15,10 @@ export function DocsPager({ slug }: { slug: string }) {
           className="group flex flex-col rounded-lg border border-border bg-bg-card/40 px-4 py-3 transition hover:border-border-strong"
         >
           <span className="flex items-center gap-1 text-xs text-fg-subtle">
-            <ArrowLeft size={12} /> Previous
+            <ArrowLeft size={12} /> {t('previous')}
           </span>
           <span className="mt-1 text-sm font-medium text-fg group-hover:text-accent">
-            {prev.title}
+            {getDocTitle(prev, locale)}
           </span>
         </Link>
       ) : (
@@ -28,10 +30,10 @@ export function DocsPager({ slug }: { slug: string }) {
           className="group flex flex-col rounded-lg border border-border bg-bg-card/40 px-4 py-3 text-right transition hover:border-border-strong"
         >
           <span className="flex items-center justify-end gap-1 text-xs text-fg-subtle">
-            Next <ArrowRight size={12} />
+            {t('next')} <ArrowRight size={12} />
           </span>
           <span className="mt-1 text-sm font-medium text-fg group-hover:text-accent">
-            {next.title}
+            {getDocTitle(next, locale)}
           </span>
         </Link>
       ) : (

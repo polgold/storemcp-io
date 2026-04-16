@@ -183,7 +183,9 @@
     "eyebrow": "Blog",
     "title": "Notas y anuncios",
     "subtitle": "Lo que estamos construyendo, cómo usarlo y hacia dónde va el comercio con IA.",
-    "by": "por"
+    "by": "por",
+    "backToBlog": "Volver al blog",
+    "writtenBy": "Escrito por"
   },
   "changelogPage": {
     "eyebrow": "Changelog",
@@ -235,7 +237,13 @@
     "searchDocsPlaceholder": "Buscar documentación…",
     "noResults": "Sin resultados.",
     "onThisPage": "En esta página",
-    "edit": "Editar en GitHub"
+    "edit": "Editar en GitHub",
+    "previous": "Anterior",
+    "next": "Siguiente",
+    "documentation": "Documentación"
+  },
+  "account": {
+    "kicker": "Cuenta"
   },
   "banner": {
     "eyebrow": "Plugin de WordPress",

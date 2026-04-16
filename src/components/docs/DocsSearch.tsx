@@ -1,12 +1,16 @@
 'use client';
 
 import { useState, useEffect, useMemo } from 'react';
+import { useTranslations } from 'next-intl';
+import { useLocale } from 'next-intl';
 import { Search, Command, ArrowRight } from 'lucide-react';
 import { Link } from '@/i18n/navigation';
-import { flattenDocs } from '@/lib/docs-nav';
+import { flattenDocs, getDocTitle } from '@/lib/docs-nav';
 import { cn } from '@/lib/cn';
 
 export function DocsSearch() {
+  const t = useTranslations('common');
+  const locale = useLocale();
   const [open, setOpen] = useState(false);
   const [q, setQ] = useState('');
 
@@ -29,11 +33,11 @@ export function DocsSearch() {
     return all
       .filter(
         (d) =>
-          d.title.toLowerCase().includes(term) ||
+          getDocTitle(d, locale).toLowerCase().includes(term) ||
           d.slug.toLowerCase().includes(term)
       )
       .slice(0, 12);
-  }, [q, all]);
+  }, [q, all, locale]);
 
   return (
     <>
@@ -42,7 +46,7 @@ export function DocsSearch() {
         className="flex w-full items-center gap-2 rounded-md border border-border bg-bg-card/40 px-3 py-2 text-sm text-fg-subtle transition hover:border-border-strong"
       >
         <Search size={14} />
-        <span>Search docs…</span>
+        <span>{t('searchDocs')}</span>
         <span className="ml-auto flex items-center gap-0.5 rounded border border-border px-1.5 py-0.5 font-mono text-[10px] text-fg-subtle">
           <Command size={10} />K
         </span>
@@ -63,7 +67,7 @@ export function DocsSearch() {
                 autoFocus
                 value={q}
                 onChange={(e) => setQ(e.target.value)}
-                placeholder="Search documentation…"
+                placeholder={t('searchDocsPlaceholder')}
                 className="h-12 w-full bg-transparent text-sm text-fg placeholder:text-fg-subtle focus:outline-none"
               />
               <kbd className="rounded border border-border px-1.5 py-0.5 font-mono text-[10px] text-fg-subtle">
@@ -73,7 +77,7 @@ export function DocsSearch() {
             <ul className="max-h-[60vh] overflow-y-auto p-2">
               {filtered.length === 0 && (
                 <li className="px-3 py-6 text-center text-sm text-fg-subtle">
-                  No results.
+                  {t('noResults')}
                 </li>
               )}
               {filtered.map((d) => (
@@ -83,7 +87,7 @@ export function DocsSearch() {
                     onClick={() => setOpen(false)}
                     className="group flex items-center gap-2 rounded-md px-3 py-2 text-sm text-fg-muted transition hover:bg-bg-elevated hover:text-fg"
                   >
-                    <span className="flex-1 truncate">{d.title}</span>
+                    <span className="flex-1 truncate">{getDocTitle(d, locale)}</span>
                     <span className="text-xs text-fg-subtle">
                       {d.slug}
                     </span>

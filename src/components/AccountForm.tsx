@@ -87,7 +87,7 @@ export function AccountForm({ isES }: Props) {
   return (
     <div className="rounded-2xl border border-border bg-bg-card/40 p-8">
       <div className="text-xs font-medium uppercase tracking-[0.2em] text-accent">
-        Account
+        {isES ? 'Cuenta' : 'Account'}
       </div>
       <h1 className="mt-2 text-3xl font-bold tracking-tight text-fg">
         {isES ? 'Gestioná tu licencia' : 'Manage your license'}
